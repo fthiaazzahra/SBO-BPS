@@ -15,6 +15,7 @@ const DasarHukum = () => {
         </div>
         <div className="w-[30%]">
           <h1 className="text-black border h-screen">Aang</h1>
+          <h1 className="text-black border h-screen">Fathia</h1>
         </div>
       </div>
     </>
