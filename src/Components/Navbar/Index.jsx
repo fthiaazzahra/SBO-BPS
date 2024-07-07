@@ -82,7 +82,7 @@ const Navbar = () => {
                   >
                     <li>
                       <a
-                        href="#"
+                        href="/dasar-hukum"
                         className="text-gray-900 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
                       >
                         Dasar Hukum
