@@ -1,4 +1,3 @@
-import React from "react";
 import { PanelMenu } from "primereact/panelmenu";
 
 export default function PanelManuDasarHukum() {
