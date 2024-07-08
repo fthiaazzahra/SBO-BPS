@@ -1,3 +1,4 @@
+import Footer from "../../Components/Navbar/Footer/Footer";
 import Navbar from "../../Components/Navbar/Index";
 import "animate.css";
 export default function HomePage() {
@@ -35,6 +36,7 @@ export default function HomePage() {
           </div>
         </section>
       </div>
+      <Footer />
     </>
   );
 }
