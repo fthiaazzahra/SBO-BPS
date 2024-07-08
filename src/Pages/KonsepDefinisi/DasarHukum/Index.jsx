@@ -20,6 +20,7 @@ const DasarHukum = () => {
           <h1 className="text-black border h-screen">Novo</h1>
           <h1 className="text-black border h-screen">Dika</h1>
           <h1 className="text-black border h-screen">Isna</h1>
+          <h1 className="text-black border h-screen">Kang Mas</h1>
         </div>
       </div>
     </>
