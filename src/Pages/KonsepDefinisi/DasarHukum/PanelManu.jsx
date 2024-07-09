@@ -1,44 +1,32 @@
 import { PanelMenu } from "primereact/panelmenu";
+import { useNavigate } from "react-router-dom";
 
 export default function PanelManuDasarHukum() {
+  const navigate = useNavigate();
+
   const items = [
     {
-      label: "Files",
+      label: "Konsep Definisi",
       icon: "pi pi-file",
       items: [
         {
-          label: "Documents",
+          label: "Dasar Hukum",
           icon: "pi pi-file",
-          items: [
-            {
-              label: "Invoices",
-              icon: "pi pi-file-pdf",
-              items: [
-                {
-                  label: "Pending",
-                  icon: "pi pi-stop",
-                },
-                {
-                  label: "Paid",
-                  icon: "pi pi-check-circle",
-                },
-              ],
-            },
-            {
-              label: "Clients",
-              icon: "pi pi-users",
-            },
-          ],
+          command: () => {
+            navigate("/dasar-hukum");
+          },
         },
         {
-          label: "Images",
+          label: "Nilai-nilai Inti BPS",
           icon: "pi pi-image",
-          items: [
-            {
-              label: "Logos",
-              icon: "pi pi-image",
-            },
-          ],
+          command: () => {
+            navigate("/");
+            window.location.reload();
+          },
+        },
+        {
+          label: "Model Implementasi",
+          icon: "pi pi-image",
         },
       ],
     },
@@ -79,8 +67,9 @@ export default function PanelManuDasarHukum() {
       ],
     },
   ];
+
   return (
-    <div className="card flex justify-content-center">
+    <div className="card hidden md:flex justify-content-center">
       <PanelMenu model={items} className="w-full md:w-20rem" />
     </div>
   );

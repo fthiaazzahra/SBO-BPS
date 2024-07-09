@@ -9,14 +9,14 @@ const DasarHukum = () => {
     <>
       <Navbar />
       <div className="w-full pt-[90px]">
-        <Jumbotron />
+        <Jumbotron title={"Dasar Hukum"} />
       </div>
 
-      <div className="bg-white px-20 py-10 flex gap-4">
-        <div className="w-[70%]">
+      <div className="bg-white px-10 md:px-20 py-10 flex gap-4">
+        <div className="w-full md:w-[70%]">
           <ListDasarHukum />
         </div>
-        <div className="w-[30%] h-screen">
+        <div className="hidden md:block md:w-[30%] h-screen">
           <PanelManuDasarHukum />
         </div>
       </div>

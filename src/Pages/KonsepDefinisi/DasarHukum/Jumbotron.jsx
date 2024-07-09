@@ -1,8 +1,10 @@
-const Jumbotron = () => {
+// eslint-disable-next-line react/prop-types
+const Jumbotron = ({ title }) => {
   return (
     <>
-      <section className="bg-white dark:bg-gray-900 bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')]">
-        <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 z-10 relative">
+      <section className="relative bg-[url('/img/gedung.png')] bg-no-repeat bg-cover bg-center">
+        <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
+        <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 z-20 relative">
           <a
             href="#"
             className="inline-flex justify-between items-center py-1 px-1 pe-4 mb-7 text-sm text-blue-700 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-800"
@@ -29,24 +31,24 @@ const Jumbotron = () => {
               />
             </svg>
           </a>
-          <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-            DASAR HUKUM
+          <h1 className="mb-4 text-4xl uppercase font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
+            {title}
           </h1>
-          <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-200">
+          <p className="mb-8 text-lg font-normal text-gray-200 lg:text-xl sm:px-16 lg:px-48">
             Here at Flowbite we focus on markets where technology, innovation,
             and capital can unlock long-term value and drive economic growth.
           </p>
           <form className="w-full max-w-md mx-auto">
             <label
               htmlFor="default-email"
-              className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+              className="mb-2 text-sm font-medium text-gray-200 sr-only"
             >
               Email sign-up
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 rtl:inset-x-0 start-0 flex items-center ps-3.5 pointer-events-none">
                 <svg
-                  className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                  className="w-4 h-4 text-gray-500"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="currentColor"
@@ -72,7 +74,6 @@ const Jumbotron = () => {
             </div>
           </form>
         </div>
-        <div className="bg-gradient-to-b from-blue-50 to-transparent dark:from-blue-900 w-full h-full absolute top-0 left-0 z-0"></div>
       </section>
     </>
   );
