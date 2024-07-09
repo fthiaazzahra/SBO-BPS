@@ -74,7 +74,6 @@ const ListDasarHukum = () => {
               <span className="text-white">{item.no}</span>
             </span>
             <h3 className="text-base text-black text-justify">{item.title}</h3>
-            <p className="text-sm">Step details here</p>
           </li>
         ))}
       </ol>

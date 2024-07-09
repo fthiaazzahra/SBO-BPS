@@ -33,8 +33,7 @@ const Jumbotron = () => {
             DASAR HUKUM
           </h1>
           <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-200">
-            Here at Flowbite we focus on markets where technology, innovation,
-            and capital can unlock long-term value and drive economic growth.
+          Dasar hukum adalah landasan atau pijakan yang digunakan untuk menetapkan suatu aturan, kebijakan, atau keputusan dalam sistem hukum. 
           </p>
           <form className="w-full max-w-md mx-auto">
             <label

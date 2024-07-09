@@ -21,7 +21,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`bg-[#002B6A] border-gray-200 text-white border fixed w-full z-[999] transition-all ease-in-out animate__animated animate__fadeInDown ${
+      className={`bg-[#002B6A] border-gray-200 text-white border fixed w-full z-[800] transition-all ease-in-out animate__animated animate__fadeInDown ${
         scrolled ? "py-0" : "py-2"
       }`}
     >
@@ -145,7 +145,7 @@ const Navbar = () => {
                         href="#"
                         className="text-gray-900 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
                       >
-                        Dasar Hukum
+                        Perilaku Kerja Pegawai
                       </a>
                     </li>
                     <li>
@@ -153,7 +153,7 @@ const Navbar = () => {
                         href="#"
                         className="text-gray-900 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
                       >
-                        Nilai-nilai Inti BPS
+                        Leadership Budaya Organisasi
                       </a>
                     </li>
                     <li>
@@ -161,7 +161,15 @@ const Navbar = () => {
                         href="#"
                         className="text-gray-900 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
                       >
-                        Model Implementasi
+                        People Budaya Organisasi
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        className="text-gray-900 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
+                      >
+                        System Budaya Organisasi
                       </a>
                     </li>
                   </ul>
@@ -206,7 +214,7 @@ const Navbar = () => {
                         href="#"
                         className="text-gray-900 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
                       >
-                        Dasar Hukum
+                        Penilaian Budaya Organisasi
                       </a>
                     </li>
                     <li>
@@ -214,15 +222,7 @@ const Navbar = () => {
                         href="#"
                         className="text-gray-900 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
                       >
-                        Nilai-nilai Inti BPS
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="text-gray-900 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
-                      >
-                        Model Implementasi
+                        Penilaian Pegawai Teladan
                       </a>
                     </li>
                   </ul>
@@ -267,7 +267,7 @@ const Navbar = () => {
                         href="#"
                         className="text-gray-900 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
                       >
-                        Dasar Hukum
+                        Budaya Organisasi
                       </a>
                     </li>
                     <li>
@@ -275,15 +275,7 @@ const Navbar = () => {
                         href="#"
                         className="text-gray-900 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
                       >
-                        Nilai-nilai Inti BPS
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="text-gray-900 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
-                      >
-                        Model Implementasi
+                        Pegawai Teladan
                       </a>
                     </li>
                   </ul>
