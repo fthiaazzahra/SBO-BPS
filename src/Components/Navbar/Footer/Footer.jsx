@@ -10,7 +10,7 @@ const Footer = () => {
                 <span className="text-xl font-bold">BPS KAB. TASIKMALAYA</span>
               </div>
 
-              <p className="mt-6 max-w-md text-center leading-relaxed text-gray-500 sm:max-w-xs sm:text-left">
+              <p className="mt-6 max-w-md text-center leading-relaxed text-white sm:max-w-xs sm:text-left">
                 Badan Pusat Statistik Kabupaten Tasikmalaya Jalan Raya Timur km
                 4 Cintaraja Singaparna Tasikmalaya 46417 Telp: (0265) 549281
                 Fax: (0265) 549253 Email: bps3206@bps.go.id
@@ -86,9 +86,7 @@ const Footer = () => {
 
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:col-span-2">
               <div className="text-center sm:text-left">
-                <p className="text-lg font-medium text-gray-900">
-                  Tentang Kami
-                </p>
+                <p className="text-lg font-medium text-white">Tentang Kami</p>
 
                 <ul className="mt-8 space-y-4 text-sm">
                   <li>
@@ -186,7 +184,7 @@ const Footer = () => {
                         />
                       </svg>
 
-                      <span className="flex-1 text-gray-700">
+                      <span className="flex-1 text-white">
                         bps3206@bps.go.id
                       </span>
                     </a>
@@ -212,9 +210,7 @@ const Footer = () => {
                         />
                       </svg>
 
-                      <span className="flex-1 text-gray-700">
-                        (0265) 549281{" "}
-                      </span>
+                      <span className="flex-1 text-white">(0265) 549281 </span>
                     </a>
                   </li>
 
@@ -239,7 +235,7 @@ const Footer = () => {
                       />
                     </svg>
 
-                    <address className="-mt-0.5 flex-1 not-italic text-gray-700">
+                    <address className="-mt-0.5 flex-1 not-italic text-white">
                       Jalan Raya Timur km 4 Cintaraja Singaparna Tasikmalaya
                       46417
                     </address>
@@ -251,11 +247,11 @@ const Footer = () => {
 
           <div className="mt-12 border-t border-gray-100 pt-6">
             <div className="text-center sm:flex sm:justify-between sm:text-left">
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-white">
                 <span className="block sm:inline">All rights reserved.</span>
 
                 <a
-                  className="inline-block text-teal-600 underline transition hover:text-teal-600/75"
+                  className="inline-block text-white underline transition hover:text-white/75"
                   href="#"
                 >
                   Terms & Conditions
@@ -264,14 +260,14 @@ const Footer = () => {
                 <span>&middot;</span>
 
                 <a
-                  className="inline-block text-teal-600 underline transition hover:text-teal-600/75"
+                  className="inline-block text-white underline transition hover:text-white/75"
                   href="#"
                 >
                   Privacy Policy
                 </a>
               </p>
 
-              <p className="mt-4 text-sm text-gray-500 sm:order-first sm:mt-0">
+              <p className="mt-4 text-sm text-white sm:order-first sm:mt-0">
                 Hak Cipta © 2024 Badan Pusat Statistik Semua Hak Dilindungi
               </p>
             </div>
