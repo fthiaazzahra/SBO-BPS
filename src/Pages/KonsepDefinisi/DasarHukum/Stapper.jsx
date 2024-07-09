@@ -31,9 +31,8 @@ const ListDasarHukum = () => {
             <span className="absolute flex items-center justify-center w-8 h-8 bg-[#002B6A] rounded-full -start-4 ring-4 ring-white dark:ring-gray-900 dark:bg-green-900">
               <span className="text-white">{item.no}</span>
             </span>
-            <h3 className="text-base text-black text-justify">
-              {item.dasar_hukum}
-            </h3>
+            <h3 className="text-base text-black text-justify">{item.title}</h3>
+            <p className="text-sm">Step details here</p>
           </li>
         ))}
       </ol>
