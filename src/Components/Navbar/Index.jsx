@@ -1,6 +1,10 @@
 import "flowbite";
 import "animate.css";
 import { useEffect, useState } from "react";
+import DropdownKosepDefinisi from "../../Pages/Dropdown/KonsepDefinisi";
+import DropdownIndikator from "../../Pages/Dropdown/IndikatorPenilaian";
+import DropdownFormPenilaian from "../../Pages/Dropdown/FormPenilaian";
+import DropdownHasil from "../../Pages/Dropdown/HasilPenilaian";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -33,13 +37,13 @@ const Navbar = () => {
             <span>BADAN PUSAT STATISTIK</span>
             <span>KABUPATEN TASIKMALAYA</span>
           </div>
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <span>BPS KABUPATEN TASIKMALAYA</span>
           </div>
         </div>
 
         {/* <!-- drawer init and show --> */}
-        <div className="text-center md:hidden">
+        <div className="text-center lg:hidden">
           <button
             type="button"
             className="cursor-pointer border p-2 rounded-md"
@@ -447,13 +451,13 @@ const Navbar = () => {
 
         <div
           id="mega-menu"
-          className=" hidden items-center  w-full md:flex md:justify-center md:w-auto md:order-1 "
+          className=" hidden items-center  w-full lg:flex lg:justify-center lg:w-auto lg:order-1 overflow-x-auto "
         >
-          <ul className="flex flex-col items-center  font-medium md:flex-row gap-4  ">
+          <ul className="flex flex-col items-center  font-medium md:flex-row ">
             <li className="relative group">
               <a
                 href="/"
-                className="block py-2 px-3 uppercase text-white text-sm hover:text-[#E9781A]"
+                className="block py-2 px-3 uppercase text-white text-sm font-bold hover:text-[#E9781A]"
                 aria-current="page"
               >
                 HOME
@@ -461,246 +465,25 @@ const Navbar = () => {
               <span className="absolute left-0 bottom-[-4px] w-full h-1 bg-[#E9781A] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
             </li>
 
-            <li className="">
-              <button
-                id="mega-menu-dropdown-button"
-                data-dropdown-toggle="mega-menu-dropdown1"
-                className="flex items-center uppercase justify-between w-full py-2 px-3 font-medium text-white text-sm  hover:text-[#E9781A]"
-              >
-                Konsep Definisi{" "}
-                <svg
-                  className="w-2.5 h-2.5 ms-3"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 10 6"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="m1 1 4 4 4-4"
-                  />
-                </svg>
-              </button>
-
-              <div
-                id="mega-menu-dropdown1"
-                className="absolute z-10  hidden w-auto  text-sm bg-white border border-gray-100 rounded-sm shadow-md dark:border-gray-700  dark:bg-gray-700"
-              >
-                <div className="p-4 pb-0 text-black md:pb-4 dark:text-white">
-                  <ul
-                    className="space-y-4"
-                    aria-labelledby="mega-menu-dropdown1-button"
-                  >
-                    <li>
-                      <a
-                        href="/dasar-hukum"
-                        className="text-black  hover:text-[#E9781A] dark:hover:text-blue-500"
-                      >
-                        Dasar Hukum
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="/nilai-nilai"
-                        className="text-black hover:text-[#E9781A] dark:hover:text-blue-500"
-                      >
-                        Nilai-nilai Inti BPS
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="text-black  hover:text-[#E9781A] dark:hover:text-blue-500"
-                      >
-                        Model Implementasi
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+            <li className="relative">
+              <DropdownKosepDefinisi />
             </li>
             <li>
-              <button
-                id="mega-menu-dropdown-button2"
-                data-dropdown-toggle="mega-menu-dropdown2"
-                className="flex items-center uppercase justify-between w-full py-2 px-3 font-medium text-white text-sm hover:text-[#E9781A]"
-              >
-                Indikator Penilaian{" "}
-                <svg
-                  className="w-2.5 h-2.5 ms-3"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 10 6"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="m1 1 4 4 4-4"
-                  />
-                </svg>
-              </button>
-              <div
-                id="mega-menu-dropdown2"
-                className="absolute z-10  hidden w-auto  text-sm bg-white border border-gray-100 rounded-sm shadow-md dark:border-gray-700  dark:bg-gray-700"
-              >
-                <div className="p-4 pb-0 text-black md:pb-4 dark:text-white">
-                  <ul
-                    className="space-y-4"
-                    aria-labelledby="mega-menu-dropdown-button2"
-                  >
-                    <li>
-                      <a
-                        href="#"
-                        className="text-black dark:text-white hover:text-[#E9781A]"
-                      >
-                        Perilaku Kerja Pegawai
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="text-gray-900 dark:text-gray-400 hover:text-[#E9781A]"
-                      >
-                        Leadership Budaya Organisasi
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="text-black dark:text-white hover:text-[#E9781A]"
-                      >
-                        People Budaya Organisasi
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="text-black dark:text-white hover:text-[#E9781A]"
-                      >
-                        System Budaya Organisasi
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+              <DropdownIndikator />
             </li>
 
             <li>
-              <button
-                id="mega-menu-dropdown-button3"
-                data-dropdown-toggle="mega-menu-dropdown3"
-                className="flex items-center uppercase justify-between w-full py-2 px-3 font-medium text-white text-sm hover:text-[#E9781A]"
-              >
-                Form Penilaian{" "}
-                <svg
-                  className="w-2.5 h-2.5 ms-3"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 10 6"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="m1 1 4 4 4-4"
-                  />
-                </svg>
-              </button>
-              <div
-                id="mega-menu-dropdown3"
-                className="absolute z-10  hidden w-auto  text-sm bg-white border border-gray-100 rounded-sm shadow-md dark:border-gray-700  dark:bg-gray-700"
-              >
-                <div className="p-4 pb-0 text-white md:pb-4 dark:text-white">
-                  <ul
-                    className="space-y-4"
-                    aria-labelledby="mega-menu-dropdown-button3"
-                  >
-                    <li>
-                      <a
-                        href="#"
-                        className="text-black dark:text-white hover:text-[#E9781A]"
-                      >
-                        Penilaian Budaya Organisasi
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="text-black dark:text-white hover:text-[#E9781A]"
-                      >
-                        Penilaian Pegawai Teladan
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+              <DropdownFormPenilaian />
             </li>
 
             <li>
-              <button
-                id="mega-menu-dropdown-button4"
-                data-dropdown-toggle="mega-menu-dropdown4"
-                className="flex items-center uppercase justify-between w-full py-2 px-3 font-medium text-white text-sm hover:text-[#E9781A]"
-              >
-                Hasil Penilaian{" "}
-                <svg
-                  className="w-2.5 h-2.5 ms-3"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 10 6"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="m1 1 4 4 4-4"
-                  />
-                </svg>
-              </button>
-              <div
-                id="mega-menu-dropdown4"
-                className="absolute z-10  hidden w-auto  text-sm bg-white border border-gray-100 rounded-sm shadow-md dark:border-gray-700  dark:bg-gray-700"
-              >
-                <div className="p-4 pb-0 text-black md:pb-4 dark:text-white">
-                  <ul
-                    className="space-y-4"
-                    aria-labelledby="mega-menu-dropdown-button4"
-                  >
-                    <li>
-                      <a
-                        href="#"
-                        className="text-black dark:text-white hover:text-[#E9781A]"
-                      >
-                        Budaya Organisasi
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="text-black dark:text-white hover:text-[#E9781A]"
-                      >
-                        Pegawai Teladan
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+              <DropdownHasil />
             </li>
 
             <li>
               <a
                 href="#"
-                className="block py-2 uppercase px-3 text-white text-sm hover:text-[#E9781A]"
+                className="block py-2 uppercase px-3 text-white text-sm hover:text-[#E9781A] font-bold"
               >
                 Galeri
               </a>

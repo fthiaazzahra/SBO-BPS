@@ -1,4 +1,6 @@
 // eslint-disable-next-line react/prop-types
+import "animate.css";
+
 const Jumbotron = ({ title }) => {
   return (
     <>
@@ -31,7 +33,7 @@ const Jumbotron = ({ title }) => {
               />
             </svg>
           </a>
-          <h1 className="mb-4 text-4xl uppercase font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
+          <h1 className="mb-4 text-4xl uppercase font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl animate__animated animate__fadeInDown">
             {title}
           </h1>
 

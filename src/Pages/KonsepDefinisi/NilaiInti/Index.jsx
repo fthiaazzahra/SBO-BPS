@@ -1,6 +1,7 @@
 import Footer from "../../../Components/Navbar/Footer/Footer";
 import Navbar from "../../../Components/Navbar/Index";
 import Jumbotron from "../DasarHukum/Jumbotron";
+import PanelManuDasarHukum from "../DasarHukum/PanelManu";
 
 const akhlak = [
   {
@@ -104,7 +105,7 @@ const Nilainilai = () => {
       </div>
 
       <div className="bg-white px-10 md:px-20 py-10 flex gap-4">
-        <div className="w-full ">
+        <div className="w-full md:w-[75%]">
           <h1 className="text-black text-base text-justify mb-4">
             Mengacu kepada Surat Edaran Menteri Pendayagunaan Aparatur Negara
             dan Reformasi Birokrasi Nomor 20 Tahun 2021 tentang Implementasi
@@ -161,6 +162,9 @@ const Nilainilai = () => {
               implementasi BerAKHLAK di BPS.
             </p>
           </div>
+        </div>
+        <div className="w-[25%]">
+          <PanelManuDasarHukum />
         </div>
       </div>
       <Footer />

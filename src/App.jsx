@@ -10,6 +10,7 @@ import Priker from "./Pages/Penilaian/Priker/index";
 import LeadBO from "./Pages/Penilaian/LeadBO/indexLead";
 import PeBO from "./Pages/Penilaian/PeBO/indexPe";
 import SysBO from "./Pages/Penilaian/SysBO/indexSys";
+import Nilainilai from "./Pages/KonsepDefinisi/NilaiInti/Index";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/dasar-hukum" element={<DasarHukum />} />
+        <Route path="/nilai-nilai" element={<Nilainilai />} />
 
         <Route path="/priker" element={<Priker />} />
         <Route path="/leadbo" element={<LeadBO />} />

@@ -1,0 +1,14 @@
+/* styles.css */
+.custom-dropdown .p-dropdown-label {
+    color: white !important; /* Untuk teks placeholder */
+}
+
+.custom-dropdown .p-dropdown {
+    background-color: #002B6A !important; /* Untuk latar belakang dropdown */
+    border: none !important; /* Untuk menghilangkan border */
+}
+
+.custom-dropdown .p-dropdown-panel {
+    background-color: #002B6A !important;
+    color: black !important;
+}
