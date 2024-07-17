@@ -7,24 +7,22 @@ export default function DropdownFormPenilaian() {
   const [selectedCity, setSelectedCity] = useState(null);
 
   const cities = [
-    { name: "Dasar Hukum", code: "dasar-hukum" },
-    { name: "Rome", code: "RM" },
-    { name: "London", code: "LDN" },
-    { name: "Istanbul", code: "IST" },
-    { name: "Paris", code: "PRS" },
+    {
+      name: "Penilaian Budaya Organisasi",
+      code: "penilaian-budaya-organisasi",
+    },
+    { name: "Penilaian Pegawai Teladan", code: "RM" },
   ];
 
-  useEffect(() => {
-    if (selectedCity) {
-      navigate(`/${selectedCity.code}`);
-    }
-  }, [selectedCity, navigate]);
+  const handleSelection = (e) => {
+    navigate(`/${e.value.code}`);
+  };
 
   return (
     <div className="card flex flex-column align-items-center">
       <Dropdown
         value={selectedCity}
-        onChange={(e) => setSelectedCity(e.value)}
+        onChange={handleSelection}
         options={cities}
         optionLabel="name"
         placeholder="Form penilaian"

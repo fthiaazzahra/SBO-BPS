@@ -8,11 +8,8 @@ export default function DropdownHasil() {
   const [selectedCity, setSelectedCity] = useState(null);
 
   const cities = [
-    { name: "Dasar Hukum", code: "dasar-hukum" },
-    { name: "Rome", code: "RM" },
-    { name: "London", code: "LDN" },
-    { name: "Istanbul", code: "IST" },
-    { name: "Paris", code: "PRS" },
+    { name: "Budaya Organisasi", code: "dasar-hukum" },
+    { name: "Pegawai Teladan", code: "RM" },
   ];
 
   useEffect(() => {
@@ -31,7 +28,7 @@ export default function DropdownHasil() {
         placeholder="Hasil penilaian"
         checkmark={true}
         highlightOnSelect={false}
-        className="custom-placeholder uppercase bg-transparent text-sm" // Tambahkan kelas khusus di sini
+        className="custom-placeholder uppercase bg-transparent text-sm " // Tambahkan kelas khusus di sini
       />
     </div>
   );

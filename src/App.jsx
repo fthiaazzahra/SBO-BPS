@@ -11,6 +11,11 @@ import LeadBO from "./Pages/Penilaian/LeadBO/indexLead";
 import PeBO from "./Pages/Penilaian/PeBO/indexPe";
 import SysBO from "./Pages/Penilaian/SysBO/indexSys";
 import Nilainilai from "./Pages/KonsepDefinisi/NilaiInti/Index";
+import FormPenialain from "./Pages/FormPenilaian/Index";
+import PenilaianBudayaOrganisasi from "./Pages/Penilaian-Budaya-Organisasi/Index";
+import EndQuist from "./Pages/FormPenilaian/TheEnd";
+import HasilSBO from "./Pages/HasilPenilaian/Hasil-SBO/Index";
+import HasilPegawaiTeladan from "./Pages/HasilPenilaian/Hasil-PegawaiTeladan/Index";
 
 function App() {
   return (
@@ -24,6 +29,18 @@ function App() {
         <Route path="/leadbo" element={<LeadBO />} />
         <Route path="/pebo" element={<PeBO />} />
         <Route path="/sysbo" element={<SysBO />} />
+        <Route path="/Form-penilaian" element={<FormPenialain />} />
+        <Route path="/finish-survey" element={<EndQuist />} />
+        <Route path="/hasil-survey-SBO" element={<HasilSBO />} />
+        <Route
+          path="/hasil-survey-pegawai-teladan"
+          element={<HasilPegawaiTeladan />}
+        />
+
+        <Route
+          path="/penilaian-budaya-organisasi"
+          element={<PenilaianBudayaOrganisasi />}
+        />
       </Routes>
     </Router>
   );

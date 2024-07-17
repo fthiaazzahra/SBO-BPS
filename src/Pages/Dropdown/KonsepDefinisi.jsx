@@ -1,10 +1,8 @@
-import { useState, useEffect } from "react";
 import { Dropdown } from "primereact/dropdown";
 import { useNavigate } from "react-router-dom";
 
 export default function DropdownKosepDefinisi() {
   const navigate = useNavigate();
-  const [selectedCity, setSelectedCity] = useState(null);
 
   const cities = [
     { name: "Dasar Hukum", code: "dasar-hukum" },
@@ -12,17 +10,14 @@ export default function DropdownKosepDefinisi() {
     { name: "Model Implementasi", code: "LDN" },
   ];
 
-  useEffect(() => {
-    if (selectedCity) {
-      navigate(`/${selectedCity.code}`);
-    }
-  }, [selectedCity, navigate]);
+  const handleSelection = (e) => {
+    navigate(`/${e.value.code}`);
+  };
 
   return (
-    <div className="card flex flex-column align-items-center">
+    <div className=" card flex flex-column align-items-center">
       <Dropdown
-        value={selectedCity}
-        onChange={(e) => setSelectedCity(e.value)}
+        onChange={handleSelection} // Panggil handleSelection untuk navigasi
         options={cities}
         optionLabel="name"
         placeholder="KONSEP DEFINISI"

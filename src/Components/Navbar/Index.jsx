@@ -1,10 +1,10 @@
 import "flowbite";
 import "animate.css";
 import { useEffect, useState } from "react";
-import DropdownKosepDefinisi from "../../Pages/Dropdown/KonsepDefinisi";
-import DropdownIndikator from "../../Pages/Dropdown/IndikatorPenilaian";
-import DropdownFormPenilaian from "../../Pages/Dropdown/FormPenilaian";
-import DropdownHasil from "../../Pages/Dropdown/HasilPenilaian";
+// import DropdownKosepDefinisi from "../../Pages/Dropdown/KonsepDefinisi";
+// import DropdownIndikator from "../../Pages/Dropdown/IndikatorPenilaian";
+// import DropdownFormPenilaian from "../../Pages/Dropdown/FormPenilaian";
+// import DropdownHasil from "../../Pages/Dropdown/HasilPenilaian";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -26,7 +26,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`bg-[#002B6A] border-gray-200 text-white border fixed w-full z-[800] transition-all ease-in-out animate__animated animate__fadeInDown ${
+      className={`bg-[#002B6A] border-gray-200 text-white fixed w-full z-[800] transition-all ease-in-out animate__animated animate__fadeInDown ${
         scrolled ? "py-0" : "py-2"
       }`}
     >
@@ -451,13 +451,13 @@ const Navbar = () => {
 
         <div
           id="mega-menu"
-          className=" hidden items-center  w-full lg:flex lg:justify-center lg:w-auto lg:order-1 overflow-x-auto "
+          className=" hidden items-center  w-full lg:flex lg:justify-center lg:w-auto   "
         >
-          <ul className="flex flex-col items-center  font-medium md:flex-row ">
+          <ul className="flex flex-col items-center  font-medium md:flex-row md:gap-4 ">
             <li className="relative group">
               <a
                 href="/"
-                className="block py-2 px-3 uppercase text-white text-sm font-bold hover:text-[#E9781A]"
+                className="block uppercase text-white text-sm font-bold hover:text-[#E9781A]"
                 aria-current="page"
               >
                 HOME
@@ -465,30 +465,180 @@ const Navbar = () => {
               <span className="absolute left-0 bottom-[-4px] w-full h-1 bg-[#E9781A] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
             </li>
 
-            <li className="relative">
-              <DropdownKosepDefinisi />
-            </li>
-            <li>
-              <DropdownIndikator />
+            {/* <li className="relative group">
+              <div className="dropdown dropdown-hover">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="uppercase font-bold text-sm linve hover:text-[#E9781A]"
+                >
+                  Konsep Definisi
+                </div>
+                <span className="absolute left-0 bottom-[-4px] w-full h-1 bg-[#E9781A] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content menu bg-base-100 rounded-sm z-[1] w-52 p-2 shadow"
+                >
+                  <li>
+                    <a
+                      href="/penilaian-budaya-organisasi"
+                      className="text-black"
+                    >
+                      Dasar Hukum
+                    </a>
+                  </li>
+                  <li>
+                    <a href="" className="text-black">
+                      Nilai-nilai Inti BPS
+                    </a>
+                  </li>
+                  <li>
+                    <a href="" className="text-black">
+                      Model Implementasi
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </li>
 
-            <li>
-              <DropdownFormPenilaian />
+            <li className="relative group">
+              <div className="dropdown dropdown-hover">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="uppercase font-bold text-sm linve hover:text-[#E9781A]"
+                >
+                  Indikator Penilaian
+                </div>
+                <span className="absolute left-0 bottom-[-4px] w-full h-1 bg-[#E9781A] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content menu bg-base-100 rounded-sm z-[1] w-52 p-2 shadow"
+                >
+                  <li>
+                    <a
+                      href="/penilaian-budaya-organisasi"
+                      className="text-black"
+                    >
+                      Perilaku Kerja Pegawai
+                    </a>
+                  </li>
+                  <li>
+                    <a href="" className="text-black">
+                      Leadership Budaya Organisasi
+                    </a>
+                  </li>
+                  <li>
+                    <a href="" className="text-black">
+                      People Budaya Organisasi
+                    </a>
+                  </li>
+                  <li>
+                    <a href="" className="text-black">
+                      System Budaya Organisasi
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li> */}
+            <li className="relative group">
+              <div className="dropdown dropdown-hover">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="uppercase font-bold text-sm linve hover:text-[#E9781A]"
+                >
+                  Form Penilaian
+                </div>
+                <span className="absolute left-0 bottom-[-4px] w-full h-1 bg-[#E9781A] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content menu bg-base-100 rounded-sm z-[1] w-52 p-2 shadow"
+                >
+                  <li>
+                    <a
+                      href="/penilaian-budaya-organisasi"
+                      className="text-black"
+                    >
+                      Penilaian Budaya Organisasi
+                    </a>
+                  </li>
+                  <li>
+                    <a href="" className="text-black">
+                      Penilaian Pegawai Teladan
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li className="relative group">
+              <div className="dropdown dropdown-hover">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="uppercase text-sm font-bold hover:text-[#E9781A]"
+                >
+                  Hasil Penilaian
+                </div>
+                <span className="absolute left-0 bottom-[-4px] w-full h-1 bg-[#E9781A] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content menu bg-base-100 rounded-sm z-[1] w-52 p-2 shadow"
+                >
+                  <li>
+                    <a href="/hasil-survey-SBO" className="text-black">
+                      Budaya Organisasi
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/hasil-survey-pegawai-teladan"
+                      className="text-black"
+                    >
+                      Pegawai Teladan
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </li>
 
-            <li>
-              <DropdownHasil />
-            </li>
-
-            <li>
+            {/* <li>
               <a
                 href="#"
-                className="block py-2 uppercase px-3 text-white text-sm hover:text-[#E9781A] font-bold"
+                className="block uppercase text-white hover:text-[#E9781A] font-bold"
               >
                 Galeri
               </a>
-            </li>
+            </li> */}
           </ul>
+        </div>
+        <div className="hidden lg:block">
+          <a
+            className="group relative inline-flex items-center overflow-hidden rounded bg-[#E9781A] px-8 py-3 text-white focus:outline-none focus:ring active:bg-indigo-500"
+            href="#"
+          >
+            <span className="absolute -end-full transition-all group-hover:end-4">
+              <svg
+                className="size-5 rtl:rotate-180"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </span>
+
+            <span className="text-sm font-medium transition-all group-hover:me-4">
+              {" "}
+              Login{" "}
+            </span>
+          </a>
         </div>
       </div>
     </nav>
