@@ -16,6 +16,7 @@ import PenilaianBudayaOrganisasi from "./Pages/Penilaian-Budaya-Organisasi/Index
 import EndQuist from "./Pages/FormPenilaian/TheEnd";
 import HasilSBO from "./Pages/HasilPenilaian/Hasil-SBO/Index";
 import HasilPegawaiTeladan from "./Pages/HasilPenilaian/Hasil-PegawaiTeladan/Index";
+import FormPegawaiTeladan from "./Pages/FormPegawaiTeladan/Index";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="/Form-penilaian" element={<FormPenialain />} />
         <Route path="/finish-survey" element={<EndQuist />} />
         <Route path="/hasil-survey-SBO" element={<HasilSBO />} />
+        <Route path="/form-pegawai-teladan" element={<FormPegawaiTeladan />} />
         <Route
           path="/hasil-survey-pegawai-teladan"
           element={<HasilPegawaiTeladan />}
