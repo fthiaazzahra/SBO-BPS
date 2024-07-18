@@ -1,10 +1,18 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef } from 'react';
 import { Stepper } from "primereact/stepper";
 import { StepperPanel } from "primereact/stepperpanel";
 import { Button } from "primereact/button";
 import Radio from "./RadioButton";
 import { useNavigate } from "react-router-dom";
 import Form1PegawaiTeladan from "./Form1Pegawai";
+import SelectPegawai from './SelectPegawai';
+
+
+const options = [
+    { value: 'diyah', label: 'Diyah Citra Ayu Kurnia Sukma, S.E., M.SI'},
+    { value: 'iis', label: 'Iis Irmawati, A.Md'},
+    { value: 'ika', label: 'Ika Nuryani, S.ST., M.Stat'}
+];
 
 
 const data = [
@@ -94,21 +102,35 @@ const data = [
   }
 ];
 
-const candidates = [
-    { label1: "Fathia Saidah Azzahra", value: "fathiaazzahra"},
-    { label2: "Jeong Jaehyun", value: "jeongjaehyun"},
-    { label3: "Lee Jeno", value: "leejeno"},
-];
+
 
 
 export default function FormStapper() {
   const navigate = useNavigate();
   const stepperRef = useRef(null);
-  const [selectedCandidate, setSelectedCandidate] = useState(''); //kenapa anjir ini tehhh
+ 
+  const [selectedCandidate, setSelectedCandidate] = useState({
+  kandidat1: null,
+  kandidat2: null,
+  kandidat3: null,
+  });
 
-  const handleChange = (event) => {
-    setSelectedCandidate(event.target.value);
+  const handleSelectChange = (kandidat, selectedOption) => {
+    setSelectedCandidate(prevState =>({
+        ...prevState,
+        [kandidat]: selectedOption
+    }));
   };
+
+  const getAvailableOptions = currentField => {
+    const selectedValues = Object.keys(selectedCandidate)
+    .filter(key => key !== currentField)
+    .map(key => selectedCandidate[key]?.value);
+
+    return options.filter(option => !selectedValues.includes(option.value));
+  };
+
+
 
   return (
     <div className="card flex flex-col justify-content-center">
@@ -134,7 +156,61 @@ export default function FormStapper() {
             />
           </div>
         </StepperPanel>
-        <StepperPanel header="Pertanyaan Pegawai Teladan">
+        <StepperPanel header="Kandidat Pertama">
+            <SelectPegawai
+            selectedCandidate={selectedCandidates.kandidat1}
+            setSelectedCandidate={option => handleSelectChange('kandidat1', option)}
+            availableOptions={getAvailableOptions('kandidat1')}
+            />
+          <div className="flex flex-col h-12rem gap-7 ">
+            {data.map((item) => {
+              return (
+                <div
+                  key={item.key}
+                  className="border-2 flex flex-col gap-4 py-4 px-4 rounded-md shadow-md p-2 surface-border border-round surface-ground  align-items-center font-medium"
+                >
+                  <div className="pb-4 flex gap-2">
+                    <span className=" rounded-full   text-black">
+                      {item.key}
+                    </span>
+                    <p className="text-justify">{item.name}</p>
+                    
+                  </div>
+                  <Radio />
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="flex pt-4 justify-content gap-4">
+            <Button
+              label="Back"
+              severity="secondary"
+              icon="pi pi-arrow-left"
+              className="bg-slate-600 text-white px-4 py-2"
+              onClick={() => {
+                stepperRef.current.prevCallback();
+                window.scrollTo(0, 0);
+              }}
+            />
+            <Button
+              label="Next"
+              icon="pi pi-arrow-right"
+              iconPos="right"
+              className="bg-blue-500 text-white px-4 py-2"
+              onClick={() => {
+                stepperRef.current.nextCallback();
+                window.scrollTo(0, 0);
+              }}
+            />
+          </div>
+        </StepperPanel>
+        <StepperPanel header="Kandidat Kedua">
+        <SelectPegawai
+            selectedCandidate={selectedCandidates.kandidat2}
+            setSelectedCandidate={option => handleSelectChange('kandidat2', option)}
+            availableOptions={getAvailableOptions('kandidat2')}
+          />
           <div className="flex flex-col h-12rem gap-7 ">
             {data.map((item) => {
               return (
@@ -154,6 +230,53 @@ export default function FormStapper() {
             })}
           </div>
 
+          <div className="flex pt-4 justify-content gap-4">
+            <Button
+              label="Back"
+              severity="secondary"
+              icon="pi pi-arrow-left"
+              className="bg-slate-600 text-white px-4 py-2"
+              onClick={() => {
+                stepperRef.current.prevCallback();
+                window.scrollTo(0, 0);
+              }}
+            />
+            <Button
+              label="Next"
+              icon="pi pi-arrow-right"
+              iconPos="right"
+              className="bg-blue-500 text-white px-4 py-2"
+              onClick={() => {
+                stepperRef.current.nextCallback();
+                window.scrollTo(0, 0);
+              }}
+            />
+          </div>
+        </StepperPanel>
+        <StepperPanel header="Kandidat Ketiga">
+        <SelectPegawai
+            selectedCandidate={selectedCandidates.kandidat3}
+            setSelectedCandidate={option => handleSelectChange('kandidat3', option)}
+            availableOptions={getAvailableOptions('kandidat3')}
+          />
+          <div className="flex flex-col h-12rem gap-7 ">
+            {data.map((item) => {
+              return (
+                <div
+                  key={item.key}
+                  className="border-2 flex flex-col gap-4 py-4 px-4 rounded-md shadow-md p-2 surface-border border-round surface-ground  align-items-center font-medium"
+                >
+                  <div className="pb-4 flex gap-2">
+                    <span className=" rounded-full   text-black">
+                      {item.key}
+                    </span>
+                    <p className="text-justify">{item.name}</p>
+                  </div>
+                  <Radio />
+                </div>
+              );
+            })}
+          </div>
           <div className="w-full flex justify-end p-4 px-0">
             <button
               onClick={() => navigate("/finish-survey")}
