@@ -8,7 +8,7 @@ const options = [
   { value: 'ika', label: 'Ika Nuryani, SST, M.Stat.' }
 ];
 
-export default function SelectPegawai({ selectedCandidate, setSelectedCandidate, availableOptions }) {
+export default function SelectPegawai({ selectedCandidate, setSelectedCandidate }) {
   const handleCandidateChange = selectedOption => {
     setSelectedCandidate(selectedOption);
   };
@@ -20,7 +20,7 @@ export default function SelectPegawai({ selectedCandidate, setSelectedCandidate,
         id="pegawaiSelect"
         value={selectedCandidate}
         onChange={handleCandidateChange}
-        options={availableOptions}
+        options={options}
         placeholder="Pilih Pegawai"
       />
     </div>

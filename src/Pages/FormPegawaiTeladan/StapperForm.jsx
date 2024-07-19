@@ -3,7 +3,7 @@ import { Stepper } from "primereact/stepper";
 import { StepperPanel } from "primereact/stepperpanel";
 import { Button } from "primereact/button";
 import Radio from "./RadioButton";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Form1PegawaiTeladan from "./Form1Pegawai";
 import SelectPegawai from './SelectPegawai';
 
@@ -108,30 +108,8 @@ const data = [
 export default function FormStapper() {
   const navigate = useNavigate();
   const stepperRef = useRef(null);
- 
-  const [selectedCandidate, setSelectedCandidate] = useState({
-  kandidat1: null,
-  kandidat2: null,
-  kandidat3: null,
-  });
-
-  const handleSelectChange = (kandidat, selectedOption) => {
-    setSelectedCandidate(prevState =>({
-        ...prevState,
-        [kandidat]: selectedOption
-    }));
-  };
-
-  const getAvailableOptions = currentField => {
-    const selectedValues = Object.keys(selectedCandidate)
-    .filter(key => key !== currentField)
-    .map(key => selectedCandidate[key]?.value);
-
-    return options.filter(option => !selectedValues.includes(option.value));
-  };
-
-
-
+  const [selectedCandidate, setSelectedCandidate] = useState(null);
+  
   return (
     <div className="card flex flex-col justify-content-center">
       <div className="w-full flex items-center justify-center text-black pb-6">
@@ -157,10 +135,9 @@ export default function FormStapper() {
           </div>
         </StepperPanel>
         <StepperPanel header="Kandidat Pertama">
-            <SelectPegawai
-            selectedCandidate={selectedCandidates.kandidat1}
-            setSelectedCandidate={option => handleSelectChange('kandidat1', option)}
-            availableOptions={getAvailableOptions('kandidat1')}
+        <SelectPegawai 
+              selectedCandidate={selectedCandidate}
+              setSelectedCandidate={setSelectedCandidate}
             />
           <div className="flex flex-col h-12rem gap-7 ">
             {data.map((item) => {
@@ -206,11 +183,10 @@ export default function FormStapper() {
           </div>
         </StepperPanel>
         <StepperPanel header="Kandidat Kedua">
-        <SelectPegawai
-            selectedCandidate={selectedCandidates.kandidat2}
-            setSelectedCandidate={option => handleSelectChange('kandidat2', option)}
-            availableOptions={getAvailableOptions('kandidat2')}
-          />
+        <SelectPegawai 
+              selectedCandidate={selectedCandidate}
+              setSelectedCandidate={setSelectedCandidate}
+            />
           <div className="flex flex-col h-12rem gap-7 ">
             {data.map((item) => {
               return (
@@ -254,11 +230,10 @@ export default function FormStapper() {
           </div>
         </StepperPanel>
         <StepperPanel header="Kandidat Ketiga">
-        <SelectPegawai
-            selectedCandidate={selectedCandidates.kandidat3}
-            setSelectedCandidate={option => handleSelectChange('kandidat3', option)}
-            availableOptions={getAvailableOptions('kandidat3')}
-          />
+        <SelectPegawai 
+              selectedCandidate={selectedCandidate}
+              setSelectedCandidate={setSelectedCandidate}
+            />
           <div className="flex flex-col h-12rem gap-7 ">
             {data.map((item) => {
               return (
