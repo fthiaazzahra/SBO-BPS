@@ -6,6 +6,7 @@ export default function DynamicDemo() {
   const [selectedCategoryKey2, setSelectedCategoryKey2] = useState("");
   const [selections, setSelections] = useState([]);
   const [prikerValue, setPrikerValue] = useState([]);
+
   console.log("Harapan:", selectedCategoryKey1);
   console.log("Kinerja:", selectedCategoryKey2);
   console.log("Selections:", selections);
@@ -24,23 +25,15 @@ export default function DynamicDemo() {
   ];
 
   const handleSelection1 = (value) => {
+    selections.push({ type: "harapan", value: value });
     setSelectedCategoryKey1(value);
-    setSelections((prevSelections) => [
-      ...prevSelections,
-      { type: "harapan", value: value },
-    ]);
-
-    setPrikerValue((value) => [...value, {}]);
   };
 
   console.log("prikerValue:", prikerValue);
 
   const handleSelection2 = (value) => {
+    selections.push({ type: "kinerja", value: value });
     setSelectedCategoryKey2(value);
-    setSelections((prevSelections) => [
-      ...prevSelections,
-      { type: "kinerja", value: value },
-    ]);
   };
 
   return (

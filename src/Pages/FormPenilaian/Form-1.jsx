@@ -4,7 +4,7 @@ const Form1BudayaOrganisasi = () => {
       <div className="w-full">
         <div>
           <section className="">
-            <form className="mx-auto border p-4 w-1/2 bg-white rounded-md">
+            <form className="mx-auto border p-4 md:w-1/2 bg-white rounded-md">
               <div className="space-y-12 h-full">
                 <div className=" border-gray-900/10 flex flex-col justify-between pb-12">
                   <div>
@@ -17,8 +17,8 @@ const Form1BudayaOrganisasi = () => {
                   </div>
                   <div className="w-full pt-8 ">
                     <div className="flex flex-col gap-10">
-                      <div className="flex w-full items-center gap-4 ">
-                        <div className="w-[50%]">
+                      <div className="flex flex-col md:flex-row w-full items-center gap-4 ">
+                        <div className="w-full md:w-[50%] border">
                           <label
                             form="country"
                             className="block text-sm font-medium leading-6 text-gray-900"
@@ -38,7 +38,7 @@ const Form1BudayaOrganisasi = () => {
                             </select>
                           </div>
                         </div>
-                        <div className="w-[50%]">
+                        <div className="w-full md:w-[50%]">
                           <label
                             form="country"
                             className="block text-sm font-medium leading-6 text-gray-900"
@@ -49,7 +49,7 @@ const Form1BudayaOrganisasi = () => {
                             <select
                               id="country"
                               name="country"
-                              autocomplete="country-name"
+                              autoComplete="country-name"
                               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                             >
                               <option>United States</option>
@@ -59,8 +59,8 @@ const Form1BudayaOrganisasi = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="flex w-full items-center gap-4 ">
-                        <div className="w-[50%]">
+                      <div className="flex flex-col md:flex-row w-full items-center gap-4 ">
+                        <div className="w-full md:w-[50%]">
                           <label
                             form="country"
                             className="block text-sm font-medium leading-6 text-gray-900"
@@ -81,7 +81,7 @@ const Form1BudayaOrganisasi = () => {
                           </div>
                         </div>
 
-                        <div className="w-[50%]">
+                        <div className="w-full md:w-[50%]">
                           <label
                             form="country"
                             className="block text-sm font-medium leading-6 text-gray-900"
@@ -102,8 +102,8 @@ const Form1BudayaOrganisasi = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="flex w-full items-center gap-4 ">
-                        <div className="w-[50%]">
+                      <div className="flex flex-col md:flex-row w-full items-center gap-4 ">
+                        <div className="w-full md:w-[50%]">
                           <label
                             form="country"
                             className="block text-sm font-medium leading-6 text-gray-900"
@@ -123,7 +123,7 @@ const Form1BudayaOrganisasi = () => {
                             </select>
                           </div>
                         </div>
-                        <div className="w-[50%]">
+                        <div className="w-full md:w-[50%]">
                           <label
                             form="country"
                             className="block text-sm font-medium leading-6 text-gray-900"

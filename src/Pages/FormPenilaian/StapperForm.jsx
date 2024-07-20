@@ -5,6 +5,7 @@ import { Button } from "primereact/button";
 import Radio from "./RadioButton";
 import { useNavigate } from "react-router-dom";
 import Form1BudayaOrganisasi from "./Form-1";
+import DynamicDemo from "./RadioButton";
 const data = [
   {
     name: `Berorientasi pelayanan, yaitu memahami dan memenuhi kebutuhan masyarakat, ramah, cekatan, solutif, dapat diandalkan, dan melakukan perbaikan tiada henti.`,
@@ -78,7 +79,7 @@ export default function FormStapper() {
                     </span>
                     <p className="text-justify">{item.name}</p>
                   </div>
-                  <Radio />
+                  <DynamicDemo />
                 </div>
               );
             })}
@@ -121,7 +122,7 @@ export default function FormStapper() {
                     </span>
                     <p className="text-justify">{item.name}</p>
                   </div>
-                  <Radio />
+                  <DynamicDemo />
                 </div>
               );
             })}
@@ -164,7 +165,7 @@ export default function FormStapper() {
                     </span>
                     <p className="text-justify">{item.name}</p>
                   </div>
-                  <Radio />
+                  <DynamicDemo />
                 </div>
               );
             })}
@@ -207,7 +208,7 @@ export default function FormStapper() {
                     </span>
                     <p className="text-justify">{item.name}</p>
                   </div>
-                  <Radio />
+                  <DynamicDemo />
                 </div>
               );
             })}
