@@ -28,8 +28,8 @@ const ScatterChart = ({
 }) => {
   const [dataPoints, setDataPoints] = useState([]);
   const [annotations, setAnnotations] = useState({});
-  const [xRange, setXRange] = useState({ min: 0, max: 40 });
-  const [yRange, setYRange] = useState({ min: 0, max: 40 });
+  const [xRange, setXRange] = useState({ min: 30, max: 40 });
+  const [yRange, setYRange] = useState({ min: 30, max: 40 });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -113,10 +113,9 @@ const ScatterChart = ({
         let offsetX = 0;
         let offsetY = 0;
 
-        // if (point.label.startsWith("LeadBO")) {
-        //   offsetX = 0.02;
-        //   offsetY = 0.03;
-        // }
+        // Calculate the offsets based on index to avoid overlap
+        offsetX = (index % 2 === 0 ? 1 : -1) * (0.1 + index * 0.05);
+        offsetY = (index % 2 === 0 ? 1 : -1) * (0.1 + index * 0.05);
 
         const labelX = point.x + offsetX;
         const labelY = point.y + offsetY;
