@@ -4,7 +4,7 @@ import Footer from "../../../Components/Navbar/Footer/Footer";
 import Tables from "./Table";
 import VerticalBarDemo from "../../Home/Chart/DiagramBatang";
 import Diagram1 from "../../Home/Chart/DiagramIndikator/Diagram1";
-import ScatterChart from "../../Home/Chart/DiagramKartesius";
+import ScatterChart from "../../Home/IPA/DiagramKartesius";
 import Triwulan from "../../Home/DropdownTriwulan";
 import DropTahun from "../../Home/DropdownTahun";
 

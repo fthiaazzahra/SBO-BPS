@@ -564,7 +564,7 @@ const Navbar = () => {
                     </a>
                   </li>
                   <li>
-                    <a href="" className="text-black">
+                    <a href="/form-pegawai-teladan" className="text-black">
                       Penilaian Pegawai Teladan
                     </a>
                   </li>

@@ -15,7 +15,7 @@ export default function DropTahun() {
         onChange={(e) => setSelectedCity(e.value)}
         options={cities}
         optionLabel="name"
-        placeholder={selectedCity}
+        placeholder={"Tahun"}
         className=" h-6 w-full md:w-14rem flex items-center"
       />
     </div>

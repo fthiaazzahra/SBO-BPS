@@ -17,12 +17,28 @@ import EndQuist from "./Pages/FormPenilaian/TheEnd";
 import HasilSBO from "./Pages/HasilPenilaian/Hasil-SBO/Index";
 import HasilPegawaiTeladan from "./Pages/HasilPenilaian/Hasil-PegawaiTeladan/Index";
 import FormPegawaiTeladan from "./Pages/FormPegawaiTeladan/Index";
+import DiagramIndikatorPage from "./Pages/Home/DiagramIndikator/Index";
+import GapAnalysis from "./Pages/Home/GapAnalysis/Index";
+import ApaPage from "./Pages/Home/IPA/Index";
+
+import HomeAdmin from "./PagesAdmin/Home/Home";
+import PostCoba from "./Pages/FormPegawaiTeladan/PostTest";
 
 function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/coba" element={<PostCoba />} />
+        <Route path="/admin/home" element={<HomeAdmin />} />
+
         <Route path="/" element={<HomePage />} />
+        <Route path="/diagram-indikator" element={<DiagramIndikatorPage />} />
+        <Route path="/gap-analysis" element={<GapAnalysis />} />
+        <Route path="/ipa-page" element={<ApaPage />} />
+        <Route
+          path="/ipa-page/:indikator/:triwulan/:tahun"
+          element={<ApaPage />}
+        />
         <Route path="/dasar-hukum" element={<DasarHukum />} />
         <Route path="/nilai-nilai" element={<Nilainilai />} />
 

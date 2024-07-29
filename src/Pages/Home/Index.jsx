@@ -1,10 +1,10 @@
 import Footer from "../../Components/Navbar/Footer/Footer";
 import Navbar from "../../Components/Navbar/Index";
 
-import ScatterChart from "./Chart/DiagramKartesius";
+// import ScatterChart from "./Chart/DiagramKartesius";
 import "animate.css";
 import DropTahun from "./DropdownTahun";
-import Triwulan from "./DropdownTriwulan";
+// import Triwulan from "./DropdownTriwulan";
 import PegawaiTeladan from "./Pegawai-Teladan/Index";
 export default function HomePage() {
   return (
@@ -40,8 +40,160 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+
+        <section className="bg-[#002B6A] text-white">
+          <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+            <div className="mx-auto max-w-lg text-center">
+              <h2 className="text-3xl font-bold sm:text-4xl">
+                Kickstart your marketing
+              </h2>
+
+              <p className="mt-4 text-white">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Consequuntur aliquam doloribus nesciunt eos fugiat. Vitae
+                aperiam fugit consequuntur saepe laborum.
+              </p>
+            </div>
+
+            <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
+              <a
+                className="block bg-white rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-[#E9781A]"
+                href="/giagram-indikator"
+              >
+                <svg
+                  className="w-12 h-12 text-[#E9781A] dark:text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 4.5V19a1 1 0 0 0 1 1h15M7 14l4-4 4 4 5-5m0 0h-3.207M20 9v3.207"
+                  />
+                </svg>
+
+                <h2 className="mt-4 text-xl font-bold text-black">Indikator</h2>
+
+                <p className="mt-1 text-sm text-black">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ut
+                  quo possimus adipisci distinctio alias voluptatum blanditiis
+                  laudantium.
+                </p>
+              </a>
+
+              <a
+                className="block rounded-xl border bg-white border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-[#E9781A]"
+                href="/gap-analysis"
+              >
+                <svg
+                  className="w-12 h-12 text-[#E9781A] dark:text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    d="M3 11h18m-9 0v8m-8 0h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z"
+                  />
+                </svg>
+
+                <h2 className="mt-4 text-xl font-bold text-black">
+                  Gap Analiysis
+                </h2>
+
+                <p className="mt-1 text-sm text-black">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ut
+                  quo possimus adipisci distinctio alias voluptatum blanditiis
+                  laudantium.
+                </p>
+              </a>
+
+              <a
+                className="block bg-white rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-[#E9781A]"
+                href="/diagram-indikator"
+              >
+                <svg
+                  className="w-12 h-12 text-[#E9781A] dark:text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M10 6.025A7.5 7.5 0 1 0 17.975 14H10V6.025Z"
+                  />
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M13.5 3c-.169 0-.334.014-.5.025V11h7.975c.011-.166.025-.331.025-.5A7.5 7.5 0 0 0 13.5 3Z"
+                  />
+                </svg>
+
+                <h2 className="mt-4 text-xl font-bold text-black">
+                  Diagram Indikator
+                </h2>
+
+                <p className="mt-1 text-sm text-black">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ut
+                  quo possimus adipisci distinctio alias voluptatum blanditiis
+                  laudantium.
+                </p>
+              </a>
+
+              <a
+                className="block rounded-xl bg-white border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-[#E9781A]"
+                href="/ipa-page"
+              >
+                <svg
+                  className="w-12 h-12 text-[#E9781A] dark:text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M3 15v4m6-6v6m6-4v4m6-6v6M3 11l6-5 6 5 5.5-5.5"
+                  />
+                </svg>
+
+                <h2 className="mt-4 text-xl font-bold text-black">IPA</h2>
+
+                <p className="mt-1 text-sm text-black">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ut
+                  quo possimus adipisci distinctio alias voluptatum blanditiis
+                  laudantium.
+                </p>
+              </a>
+            </div>
+          </div>
+        </section>
+
         <div className="flex flex-col gap-8">
-          <div className="flex justify-center items-center mt-4">
+          {/* <div className="flex justify-center items-center mt-4">
             <div className="flex items-center">
               <h1>Tahun : </h1>
               <DropTahun />
@@ -50,8 +202,8 @@ export default function HomePage() {
               <h1>Triwulan : </h1>
               <Triwulan />
             </div>
-          </div>
-          <div className="w-full bg-[#002B6A] grid grid-cols-1 lg:grid-cols-2 pt-4">
+          </div> */}
+          {/* <div className="w-full bg-[#002B6A] grid grid-cols-1 lg:grid-cols-2 pt-4">
             <div className="border-r">
               <div className="border-b">
                 <ScatterChart />
@@ -68,7 +220,7 @@ export default function HomePage() {
                 <ScatterChart />
               </div>
             </div>
-          </div>
+          </div> */}
           <div className=" flex flex-col justify-center items-center px-10 pb-10">
             <h1 className="text-3xl font-bold uppercase border-b-8 border-[#E9781A]">
               Pegawai Teladan

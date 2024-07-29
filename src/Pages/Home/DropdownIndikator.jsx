@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Dropdown } from "primereact/dropdown";
 
-export default function Triwulan() {
+export default function IndikatorDropdown() {
   const [selectedCity, setSelectedCity] = useState("1");
   const cities = [
-    { name: "1", code: "1" },
-    { name: "2", code: "2" },
-    { name: "3", code: "3" },
-    { name: "4", code: "4" },
+    { name: "Priker", code: "1" },
+    { name: "Lead-BO", code: "2" },
+    { name: "People-BO", code: "3" },
+    { name: "System-BO", code: "4" },
   ];
 
   return (
@@ -17,8 +17,8 @@ export default function Triwulan() {
         onChange={(e) => setSelectedCity(e.value)}
         options={cities}
         optionLabel="name"
-        placeholder={"Triwulan"}
-        className=" h-6 w-full md:w-14rem flex items-center"
+        placeholder={"Indikator"}
+        className=" h-6 w-full md:w-14rem flex items-center  placeholder-white text-white"
       />
     </div>
   );
