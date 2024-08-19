@@ -1,15 +1,19 @@
+/* eslint-disable react/prop-types */
 // SelectPegawai.js
-import React from 'react';
-import Select from 'react-select';
+
+import Select from "react-select";
 
 const options = [
-  { value: 'diyah', label: 'Diyah Citra Ayu Kurnia Sukma, S.E., M.Si' },
-  { value: 'iis', label: 'Iis Irmawati, A.Md' },
-  { value: 'ika', label: 'Ika Nuryani, SST, M.Stat.' }
+  { value: "diyah", label: "Diyah Citra Ayu Kurnia Sukma, S.E., M.Si" },
+  { value: "iis", label: "Iis Irmawati, A.Md" },
+  { value: "ika", label: "Ika Nuryani, SST, M.Stat." },
 ];
 
-export default function SelectPegawai({ selectedCandidate, setSelectedCandidate }) {
-  const handleCandidateChange = selectedOption => {
+export default function SelectPegawai({
+  selectedCandidate,
+  setSelectedCandidate,
+}) {
+  const handleCandidateChange = (selectedOption) => {
     setSelectedCandidate(selectedOption);
   };
 

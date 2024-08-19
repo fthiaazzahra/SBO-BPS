@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import {
   IconButton,
@@ -32,6 +33,7 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
+import LoginUser from "../Login/LoginUser";
 
 export function SidebarWithBurgerMenu() {
   const [open, setOpen] = React.useState(0);
@@ -61,13 +63,14 @@ export function SidebarWithBurgerMenu() {
           className="h-screen rounded-none w-full p-4 bg-[#002B6A] text-white "
         >
           <div className="mb-2 flex items-center gap-4 p-4">
-            <img src="/img/logo-BPS.png" alt="brand" className="h-8 w-10" />
-            <Typography variant="h5" color="white">
+            <img src="/img/logo-BPS.png" alt="brand" className="h-16 w-20" />
+            <Typography variant="h6" color="white">
               BPS KABUPATEN TASIKMALAYA
             </Typography>
           </div>
           <div className="p-2">
             <Input
+              color="white"
               icon={<MagnifyingGlassIcon className="h-5 w-5" />}
               label="Search"
             />
@@ -99,36 +102,48 @@ export function SidebarWithBurgerMenu() {
                   className="border-b-0 p-3 text-white"
                 >
                   <ListItemPrefix>
-                    <PresentationChartBarIcon className="h-5 w-5 text-white" />
+                    <svg
+                      className="w-6 h-6"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 7 2 2 4-4m-5-9v4h4V3h-4Z"
+                      />
+                    </svg>
                   </ListItemPrefix>
                   <Typography color="white" className="mr-auto font-normal">
-                    Dashboard
+                    Form Penilaian
                   </Typography>
                 </AccordionHeader>
               </ListItem>
               <AccordionBody className="py-1">
                 <List className="p-0 text-white">
-                  <Link to={"/"}>
+                  <Link to={"/Form-penilaian"}>
                     <ListItem>
                       <ListItemPrefix>
                         <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
                       </ListItemPrefix>
-                      Analytics
+                      Budaya Organisasi
                     </ListItem>
                   </Link>
 
-                  <ListItem>
-                    <ListItemPrefix>
-                      <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                    </ListItemPrefix>
-                    Reporting
-                  </ListItem>
-                  <ListItem>
-                    <ListItemPrefix>
-                      <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                    </ListItemPrefix>
-                    Projects
-                  </ListItem>
+                  <Link to={"/form-pegawai-teladan"}>
+                    <ListItem>
+                      <ListItemPrefix>
+                        <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
+                      </ListItemPrefix>
+                      Pegawai Teladan
+                    </ListItem>
+                  </Link>
                 </List>
               </AccordionBody>
             </Accordion>
@@ -149,63 +164,103 @@ export function SidebarWithBurgerMenu() {
                   className="border-b-0 p-3"
                 >
                   <ListItemPrefix>
-                    <ShoppingBagIcon className="h-5 w-5 text-white" />
+                    <svg
+                      className="w-6 h-6 text-white dark:text-white"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M3 15v4m6-6v6m6-4v4m6-6v6M3 11l6-5 6 5 5.5-5.5"
+                      />
+                    </svg>
                   </ListItemPrefix>
                   <Typography color="white" className="mr-auto font-normal">
-                    E-Commerce
+                    Hasil Penilaian
                   </Typography>
                 </AccordionHeader>
               </ListItem>
               <AccordionBody className="py-1">
-                <List className="p-0">
-                  <ListItem>
-                    <ListItemPrefix>
-                      <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                    </ListItemPrefix>
-                    Orders
-                  </ListItem>
-                  <ListItem>
-                    <ListItemPrefix>
-                      <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                    </ListItemPrefix>
-                    Products
-                  </ListItem>
+                <List className="p-0 text-white">
+                  <Link to={`/hasil-survey-SBO`}>
+                    <ListItem>
+                      <ListItemPrefix>
+                        <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
+                      </ListItemPrefix>
+                      Penilaian Organisasi
+                    </ListItem>
+                  </Link>
+                  <Link to={"/hasil-survey-pegawai-teladan"}>
+                    <ListItem>
+                      <ListItemPrefix>
+                        <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
+                      </ListItemPrefix>
+                      Penilaian Pegawai Teladan
+                    </ListItem>
+                  </Link>
                 </List>
               </AccordionBody>
             </Accordion>
             <hr className="my-2 border-white-50" />
-            <ListItem>
-              <ListItemPrefix>
-                <InboxIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              Inbox
-              <ListItemSuffix>
-                <Chip
-                  value="14"
-                  size="sm"
-                  variant="ghost"
-                  color="white"
-                  className="rounded-full"
-                />
-              </ListItemSuffix>
-            </ListItem>
-            <ListItem>
+
+            <ListItem className="cursor-pointer-events-none">
               <ListItemPrefix>
                 <UserCircleIcon className="h-5 w-5" />
               </ListItemPrefix>
               Profile
             </ListItem>
-            <ListItem>
+            <ListItem className="cursor-pointer-events-none">
               <ListItemPrefix>
                 <Cog6ToothIcon className="h-5 w-5" />
               </ListItemPrefix>
               Settings
             </ListItem>
-            <ListItem>
+            <ListItem
+              onClick={() => {
+                localStorage.removeItem("token");
+                localStorage.removeItem("role");
+                localStorage.removeItem("nip");
+                window.location.reload();
+                window.scrollTo(0, 0);
+              }}
+              className={`cursor-pointer-events-none ${
+                localStorage.getItem("token") ? "flex" : "hidden"
+              }`}
+            >
               <ListItemPrefix>
-                <PowerIcon className="h-5 w-5" />
+                <svg
+                  className="w-6 h-6 text-white dark:text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M5 12h14M5 12l4-4m-4 4 4 4"
+                  />
+                </svg>
               </ListItemPrefix>
-              Log Out
+              Logout
+            </ListItem>
+            <ListItem
+              className={`hover:bg-none ${
+                localStorage.getItem("token") ? "hidden" : "block"
+              }`}
+            >
+              <LoginUser />
             </ListItem>
           </List>
           <Alert

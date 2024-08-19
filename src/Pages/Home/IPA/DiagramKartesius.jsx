@@ -28,32 +28,27 @@ const ScatterChart = ({
 }) => {
   const [dataPoints, setDataPoints] = useState([]);
   const [annotations, setAnnotations] = useState({});
-  const [xRange, setXRange] = useState({ min: 30, max: 40 });
-  const [yRange, setYRange] = useState({ min: 30, max: 40 });
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
         const response = await axios.get(
-          `http://localhost:5000/kartesius/${selectedIndikator}/${selectedTahun}/${selectedTriwulan}`
+          `https://aang.umkmpalangan.my.id/kartesius/${selectedIndikator}/${selectedTahun}/${selectedTriwulan}`
         );
         const data = response.data.data;
-        console.log("API Data:", data);
-        setDataPoints(data);
 
-        // Update the range based on the data points
-        const xValues = data.map((point) => point.x);
-        const yValues = data.map((point) => point.y);
-        setXRange({
-          min: Math.min(...xValues) - 1,
-          max: Math.max(...xValues) + 1,
-        });
-        setYRange({
-          min: Math.min(...yValues) - 1,
-          max: Math.max(...yValues) + 1,
-        });
+        if (data && data.length > 0) {
+          setDataPoints(data.slice(0, 100)); // Ambil hanya 100 data pertama misalnya
+        } else {
+          setDataPoints([]); // Jika data kosong, set ke array kosong
+        }
       } catch (error) {
         console.error(error);
+        setDataPoints([]); // Jika terjadi kesalahan, set dataPoints ke array kosong
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -80,76 +75,80 @@ const ScatterChart = ({
   const isMobile = () => window.innerWidth <= 580;
 
   const getAnnotations = (dataPoints) => {
-    if (isMobile()) return {};
+    if (isMobile() || dataPoints.length > 100) return {}; // Batasi jumlah anotasi yang dibuat
 
-    return {
-      midLineX: {
+    const annotationLines = dataPoints.reduce((annotations, point, index) => {
+      let offsetX = (index % 2 === 0 ? 1 : -1) * 0.01; // Adjusted offset
+      let offsetY = (index % 2 === 0 ? 1 : -1) * 0.09; // Adjusted offset
+
+      const labelX = point.x + offsetX;
+      const labelY = point.y + offsetY;
+
+      annotations[`line${index}`] = {
         type: "line",
-        xMin: (xRange.min + xRange.max) / 2,
-        xMax: (xRange.min + xRange.max) / 2,
+        xMin: point.x,
+        xMax: labelX,
+        yMin: point.y,
+        yMax: labelY,
         borderColor: "white",
         borderWidth: 1,
-        label: {
-          content: "Mid X",
-          enabled: true,
-          position: "end",
-          color: "white",
-        },
-      },
-      midLineY: {
-        type: "line",
-        yMin: (yRange.min + yRange.max) / 2,
-        yMax: (yRange.min + yRange.max) / 2,
+        borderDash: [2, 2],
+      };
+
+      annotations[`label${index}`] = {
+        type: "label",
+        xValue: labelX,
+        yValue: labelY,
+        backgroundColor: "white",
         borderColor: "white",
-        borderWidth: 1,
-        label: {
-          content: "Mid Y",
-          enabled: true,
-          position: "end",
+        content: `${point.label}; ${point.x.toFixed(2)}; ${point.y.toFixed(2)}`,
+        font: {
+          size: 10,
+          weight: "bold",
           color: "white",
         },
+      };
+
+      return annotations;
+    }, {});
+
+    // Tambahkan garis vertikal dan horizontal di tengah
+    const midX = (3 + 4) / 2;
+    const midY = (3.5 + 4) / 2;
+
+    annotationLines["verticalLine"] = {
+      type: "line",
+      xMin: midX,
+      xMax: midX,
+      yMin: 3.5,
+      yMax: 4,
+      borderColor: "white",
+      borderWidth: 2,
+      label: {
+        enabled: true,
+        content: "Mid X",
+        position: "start",
+        color: "red",
       },
-      ...dataPoints.reduce((annotations, point, index) => {
-        let offsetX = 0;
-        let offsetY = 0;
-
-        // Calculate the offsets based on index to avoid overlap
-        offsetX = (index % 2 === 0 ? 1 : -1) * (0.1 + index * 0.05);
-        offsetY = (index % 2 === 0 ? 1 : -1) * (0.1 + index * 0.05);
-
-        const labelX = point.x + offsetX;
-        const labelY = point.y + offsetY;
-
-        annotations[`label${index}`] = {
-          type: "label",
-          xValue: labelX,
-          yValue: labelY,
-          backgroundColor: "rgba(255, 255, 255, 1)",
-          borderColor: "rgba(0, 0, 0, 0)",
-          content: `${point.label}; ${point.x.toFixed(2)}; ${point.y.toFixed(
-            2
-          )}`,
-          font: {
-            size: 10,
-            weight: "bold",
-            color: "black",
-          },
-        };
-
-        annotations[`line${index}`] = {
-          type: "line",
-          xMin: point.x,
-          xMax: labelX,
-          yMin: point.y,
-          yMax: labelY,
-          borderColor: "white",
-          borderWidth: 1,
-          borderDash: [2, 2],
-        };
-
-        return annotations;
-      }, {}),
     };
+
+    annotationLines["horizontalLine"] = {
+      type: "line",
+      xMin: 3,
+      xMax: 4,
+      yMin: midY,
+      yMax: midY,
+      borderColor: "white",
+      borderWidth: 2,
+      label: {
+        enabled: true,
+        content: "Mid Y",
+        position: "",
+        color: "red",
+      },
+    };
+
+    return annotationLines;
   };
 
   const data = {
@@ -157,14 +156,17 @@ const ScatterChart = ({
       {
         label: "Grafik Perilaku Kerja Pegawai Tahun 2024",
         data: dataPoints,
-        backgroundColor: "rgba(54, 162, 235, 1)",
-        borderColor: "rgba(54, 162, 235, 1)",
+        backgroundColor: "white",
+        borderColor: "white",
         pointRadius: 5,
+        pointHoverRadius: 7,
       },
     ],
   };
 
   const options = {
+    responsive: true,
+    maintainAspectRatio: false,
     scales: {
       x: {
         type: "linear",
@@ -179,9 +181,11 @@ const ScatterChart = ({
         },
         ticks: {
           color: "white",
+          stepSize: 0.1,
+          beginAtZero: false,
         },
-        min: xRange.min,
-        max: xRange.max,
+        min: 3,
+        max: 4,
       },
       y: {
         title: {
@@ -191,9 +195,11 @@ const ScatterChart = ({
         },
         ticks: {
           color: "white",
+          stepSize: 0.1,
+          beginAtZero: false,
         },
-        min: yRange.min,
-        max: yRange.max,
+        min: 3.5,
+        max: 4,
       },
     },
     plugins: {
@@ -218,8 +224,24 @@ const ScatterChart = ({
     },
   };
 
+  if (loading) {
+    return (
+      <div className="text-white w-full flex justify-center">
+        <span className="loading loading-infinity loading-lg"></span>
+      </div>
+    );
+  }
+
+  if (dataPoints.length === 0) {
+    return (
+      <div className="text-white text-center">
+        Tidak ada data yang tersedia.
+      </div>
+    );
+  }
+
   return (
-    <div>
+    <div style={{ width: "100%", height: "600px" }}>
       <Scatter className="p-4 rounded-md" data={data} options={options} />
     </div>
   );

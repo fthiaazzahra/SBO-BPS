@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import {
   Card,
@@ -20,7 +21,7 @@ import {
   PowerIcon,
 } from "@heroicons/react/24/solid";
 import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export function Sidebar() {
   const [open, setOpen] = React.useState(0);
@@ -30,7 +31,7 @@ export function Sidebar() {
   };
 
   return (
-    <Card className="h-screen w-full rounded-none bg-[#091f3e] border-t-2 border-yellow-600 max-w-[20rem]  shadow-xl shadow-blue-gray-900/5">
+    <Card className="h-screen w-full rounded-none bg-[#002B6A] border-t-2 border-[#E9781A] max-w-[20rem]  shadow-xl shadow-blue-gray-900/5">
       <List className="p-4">
         <Accordion
           open={open === 1}
@@ -76,30 +77,28 @@ export function Sidebar() {
                 </svg>
               </ListItemPrefix>
               <Typography color="white" className="mr-auto font-normal">
-                Dashboard
+                Hitung Survey
               </Typography>
             </AccordionHeader>
           </ListItem>
           <AccordionBody className="py-1">
             <List className="p-0">
-              <ListItem className="text-white">
-                <ListItemPrefix>
-                  <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                </ListItemPrefix>
-                Analytics
-              </ListItem>
-              <ListItem className="text-white">
-                <ListItemPrefix>
-                  <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                </ListItemPrefix>
-                Reporting
-              </ListItem>
-              <ListItem className="text-white">
-                <ListItemPrefix>
-                  <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                </ListItemPrefix>
-                Projects
-              </ListItem>
+              <Link to={"/admin/hitung-nilai-sbo"}>
+                <ListItem className="text-white">
+                  <ListItemPrefix>
+                    <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
+                  </ListItemPrefix>
+                  SBO
+                </ListItem>
+              </Link>
+              <Link to={"/admin/hitung-nilai-pegawai-teladan"}>
+                <ListItem className="text-white">
+                  <ListItemPrefix>
+                    <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
+                  </ListItemPrefix>
+                  Karyawan Teladan
+                </ListItem>
+              </Link>
             </List>
           </AccordionBody>
         </Accordion>
@@ -123,42 +122,47 @@ export function Sidebar() {
                 <ShoppingBagIcon className="h-5 w-5" />
               </ListItemPrefix>
               <Typography color="white" className="mr-auto font-normal">
-                E-Commerce
+                Hasil Survey
               </Typography>
             </AccordionHeader>
           </ListItem>
           <AccordionBody className="py-1">
             <List className="p-0">
-              <ListItem className="text-white">
-                <ListItemPrefix>
-                  <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                </ListItemPrefix>
-                Orders
-              </ListItem>
-              <ListItem className="text-white">
-                <ListItemPrefix>
-                  <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                </ListItemPrefix>
-                Products
-              </ListItem>
+              <Link to={"/admin/hasil-nilai-SBO"}>
+                <ListItem className="text-white">
+                  <ListItemPrefix>
+                    <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
+                  </ListItemPrefix>
+                  Hasil SBO
+                </ListItem>
+              </Link>
+              <Link to={"/admin/hasil-nilai-pegawai-teladan"}>
+                <ListItem className="text-white">
+                  <ListItemPrefix>
+                    <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
+                  </ListItemPrefix>
+                  Hasil Survey Pegawai Teladan
+                </ListItem>
+              </Link>
             </List>
           </AccordionBody>
         </Accordion>
-        <ListItem className="text-white">
-          <ListItemPrefix>
-            <InboxIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          Inbox
-          <ListItemSuffix>
-            <Chip
-              value="14"
-              size="sm"
-              variant="ghost"
-              color="white"
-              className="rounded-full"
-            />
-          </ListItemSuffix>
-        </ListItem>
+        <Link to={"/admin/pegawai"}>
+          <ListItem className="text-white">
+            <ListItemPrefix>
+              <InboxIcon className="h-5 w-5" />
+            </ListItemPrefix>
+            Pegawai
+          </ListItem>
+        </Link>
+        <Link to={"/admin/hak-akses"}>
+          <ListItem className="text-white">
+            <ListItemPrefix>
+              <InboxIcon className="h-5 w-5" />
+            </ListItemPrefix>
+            Hak Akses
+          </ListItem>
+        </Link>
         <ListItem className="text-white">
           <ListItemPrefix>
             <UserCircleIcon className="h-5 w-5" />

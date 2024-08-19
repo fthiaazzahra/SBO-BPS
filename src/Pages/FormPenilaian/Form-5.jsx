@@ -1,51 +1,41 @@
 import { RadioButton } from "primereact/radiobutton";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Toast } from "primereact/toast";
 import axios from "axios";
-
-const dataPeople = [
-  { name: `Pegawai memahami dan memenuhi kebutuhan masyarakat`, key: "1" },
-  { name: `Pegawai ramah, cekatan, solutif dan dapat diandalkan.`, key: "2" },
-  { name: `Pegawai melakukan perbaikan tiada henti.`, key: "3" },
-  {
-    name: `Pegawai melaksanakan tugas dengan jujur, bertanggungjawab, cermat, disiplin dan berintegritas tinggi `,
-    key: "4",
-  },
-  {
-    name: `Pegawai menggunakan kekayaan dan barang milik negara secara bertanggung jawab, efektif, dan efisien `,
-    key: "5",
-  },
-  { name: `Pegawai tidak menyalahgunakan kewenangan jabatan`, key: "6" },
-  {
-    name: ` Pegawai meningkatkan kompetensi diri untuk menjawab tantangan yang selalu berubah`,
-    key: "7",
-  },
-  { name: `Pegawai membantu orang lain belajar`, key: "8" },
-  { name: `Pegawai membantu orang lain belajar`, key: "9" },
-  {
-    name: `Pegawai menghargai setiap orang apapun latar belakangnya`,
-    key: "10",
-  },
-  { name: `Pegawai suka menolong orang lain`, key: "11" },
-];
+import { useNavigate } from "react-router-dom";
 
 const categories = [
-  { name: "1", key: "1" },
-  { name: "2", key: "2" },
-  { name: "3", key: "3" },
-  { name: "4", key: "4" },
+  { name: 1, key: 1 },
+  { name: 2, key: 2 },
+  { name: 3, key: 3 },
+  { name: 4, key: 4 },
 ];
 
 const FormSystem = () => {
+  const navigate = useNavigate();
+  const [desable, setDesable] = useState(false);
+  const [dataSystem, setDataSystem] = useState([]);
   const toastCenter = useRef(null);
   const [loader, setLoader] = useState(false);
-  const [harapanSelections, setHarapanSelections] = useState(
-    new Array(dataPeople.length).fill(null)
-  );
-  const [kinerjaSelections, setKinerjaSelections] = useState(
-    new Array(dataPeople.length).fill(null)
-  );
-  const [error, setError] = useState(null);
+  const [harapanSelections, setHarapanSelections] = useState([]);
+  const [kinerjaSelections, setKinerjaSelections] = useState([]);
+
+  useEffect(() => {
+    const getPertanyaan = async () => {
+      try {
+        const response = await axios.get(
+          "https://aang.umkmpalangan.my.id/pertanyaan_system_get"
+        );
+        setDataSystem(response.data);
+        setHarapanSelections(new Array(response.data.length).fill(null));
+        setKinerjaSelections(new Array(response.data.length).fill(null));
+      } catch (error) {
+        setLoader(false);
+        console.error(error);
+      }
+    };
+    getPertanyaan();
+  }, []);
 
   const showMessage = (severity, summary, detail) => {
     toastCenter.current.show({
@@ -66,41 +56,34 @@ const FormSystem = () => {
     });
   };
 
-  const validateForm = () => {
-    const allAnsweredHarapan = harapanSelections.every(
-      (selection) => selection !== null
-    );
-    const allAnsweredKinerja = kinerjaSelections.every(
-      (selection) => selection !== null
-    );
-    if (!allAnsweredHarapan || !allAnsweredKinerja) {
-      setError("Semua pertanyaan harus dijawab.");
-      return false;
-    }
-    setError(null);
-    return true;
-  };
+  const handleSaveSystem = async (e) => {
+    e.preventDefault();
 
-  const handleSaveSystem = async () => {
-    if (!validateForm()) {
-      showMessage("error", "Error", error);
+    if (harapanSelections.includes(null) || kinerjaSelections.includes(null)) {
+      showMessage("warn", "Peringatan", "Semua pertanyaan harus diisi!");
       return;
     }
+
     try {
       setLoader(true);
-      const response = await axios.post("http://localhost:5000/isiSurvey", {
-        triwulan: localStorage.getItem("triwulan"),
-        label: "SysBO",
-        nama: localStorage.getItem("name"),
-        jenis_kelamin: localStorage.getItem("gender"),
-        umur: localStorage.getItem("umur"),
-        pendidikan: localStorage.getItem("Pendidikan"),
-        masa_kerja: localStorage.getItem("timeKerja"),
-        score_harapan: harapanSelections,
-        score_kinerja: kinerjaSelections,
-      });
+      const response = await axios.post(
+        "https://aang.umkmpalangan.my.id/isiSurvey",
+        {
+          triwulan: localStorage.getItem("triwulan"),
+          label: "SysBO",
+          nama: localStorage.getItem("name"),
+          jenis_kelamin: localStorage.getItem("gender"),
+          umur: localStorage.getItem("umur"),
+          pendidikan: localStorage.getItem("Pendidikan"),
+          masa_kerja: localStorage.getItem("timeKerja"),
+          score_harapan: harapanSelections,
+          score_kinerja: kinerjaSelections,
+        }
+      );
       if (response.status === 201) {
         showMessage("success", "Success", "Jawaban Kamu Berhasil Disimpan");
+        setDesable(true);
+        navigate("/finish-survey");
       }
       setLoader(false);
     } catch (error) {
@@ -113,14 +96,14 @@ const FormSystem = () => {
     <>
       <Toast ref={toastCenter} position="center" />
       <div className="flex flex-col h-12rem gap-7">
-        {dataPeople.map((item, index) => (
+        {dataSystem.map((item, index) => (
           <div
-            key={item.key}
+            key={item.nomor}
             className="border-2 flex flex-col gap-4 py-4 px-4 rounded-md shadow-md p-2 surface-border border-round surface-ground align-items-center font-medium"
           >
             <div className="pb-4 flex gap-2">
-              <span className="rounded-full text-black">{item.key}</span>
-              <p className="text-justify">{item.name}</p>
+              <span className="rounded-full text-black">{item.nomor}</span>
+              <p className="text-justify">{item.pertanyaan_system}</p>
             </div>
             <div className="card flex justify-center w-full">
               <div className="flex flex-col lg:flex-row md:justify-center gap-4 md:gap-20 w-full">
@@ -188,13 +171,15 @@ const FormSystem = () => {
 
       <div className="flex justify-end mt-4 items-center">
         <button
-          className="inline-block rounded bg-indigo-600 px-4 py-2 font-medium text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-indigo-500"
+          className={`inline-block rounded bg-green-500 px-4 py-2 font-medium text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-indigo-500 ${
+            desable ? "hidden" : "block"
+          }`}
           onClick={handleSaveSystem}
         >
           {loader ? (
             <span className="loading loading-dots loading-md"></span>
           ) : (
-            "Submit"
+            "Submit and Finish"
           )}
         </button>
       </div>

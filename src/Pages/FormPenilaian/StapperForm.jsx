@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Stepper } from "primereact/stepper";
 import { StepperPanel } from "primereact/stepperpanel";
 import { Button } from "primereact/button";
@@ -11,20 +11,26 @@ import FormPeople from "./Form-4";
 import FormSystem from "./Form-5";
 
 export default function FormStapper() {
+  const token = localStorage.getItem("token");
+  console.log("Mana TOken", token);
   const navigate = useNavigate();
   const stepperRef = useRef(null);
+
+  useEffect(() => {
+    if (token === null) {
+      navigate("/");
+    }
+  }, []);
 
   const jabatan = localStorage.getItem("jabatan");
   console.log(jabatan);
 
-  const finish = () => {
-    localStorage.clear();
-    navigate("/finish-survey");
-  };
   return (
     <div className="card flex flex-col justify-content-center">
       <div className="w-full flex items-center justify-center text-black pb-6">
-        <h1 className="text-3xl uppercase font-bold">Form Penilaian</h1>
+        <h1 className="text-xl md:text-3xl text-center uppercase font-bold">
+          Form Penilaian Budaya Organisasi
+        </h1>
       </div>
       <Stepper ref={stepperRef} style={{ flexBasis: "100%" }}>
         <StepperPanel header="Data Pegawai">
@@ -47,17 +53,7 @@ export default function FormStapper() {
         </StepperPanel>
         <StepperPanel header="Pliker">
           <FormPliker />
-          <div className="flex pt-4 justify-content gap-4">
-            <Button
-              label="Back"
-              severity="secondary"
-              icon="pi pi-arrow-left"
-              className="bg-slate-600 text-white px-4 py-2"
-              onClick={() => {
-                stepperRef.current.prevCallback();
-                window.scrollTo(0, 0);
-              }}
-            />
+          <div className="flex pt-4 justify-start gap-4">
             <Button
               label="Next"
               icon="pi pi-arrow-right"
@@ -77,16 +73,6 @@ export default function FormStapper() {
 
           <div className="flex pt-4 gap-4">
             <Button
-              label="Back"
-              severity="secondary"
-              icon="pi pi-arrow-left"
-              className="bg-slate-600 text-white px-4 py-2"
-              onClick={() => {
-                stepperRef.current.prevCallback();
-                window.scrollTo(0, 0);
-              }}
-            />
-            <Button
               label="Next"
               icon="pi pi-arrow-right"
               iconPos="right"
@@ -103,16 +89,6 @@ export default function FormStapper() {
 
           <div className="flex pt-4 gap-4">
             <Button
-              label="Back"
-              severity="secondary"
-              className="bg-slate-600 text-white px-4 py-2"
-              icon="pi pi-arrow-left"
-              onClick={() => {
-                stepperRef.current.prevCallback();
-                window.scrollTo(0, 0);
-              }}
-            />
-            <Button
               label="Next"
               className="bg-blue-500 text-white px-4 py-2"
               icon="pi pi-arrow-right"
@@ -126,25 +102,6 @@ export default function FormStapper() {
         </StepperPanel>
         <StepperPanel header="SysBO">
           <FormSystem />
-
-          <div className="flex pt-4 justify-content-start gap-4">
-            <Button
-              label="Back"
-              severity="secondary"
-              className="bg-slate-600 text-white px-4 py-2 transition-all"
-              icon="pi pi-arrow-left"
-              onClick={() => {
-                stepperRef.current.prevCallback();
-                window.scrollTo(0, 0);
-              }}
-            />
-            <Button
-              onClick={finish}
-              className="p-2 bg-green-500 text-white font-semibold"
-            >
-              Submit and Finish
-            </Button>
-          </div>
         </StepperPanel>
       </Stepper>
     </div>

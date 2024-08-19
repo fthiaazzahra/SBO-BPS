@@ -62,25 +62,26 @@ export function SidebarWithBurgerMenu() {
         <Card
           color="transparent"
           shadow={false}
-          className="h-[calc(100vh-2rem)] w-full p-4"
+          className="h-screen rounded-none bg-[#002B6A] w-full p-4"
         >
           <div className="mb-2 flex items-center gap-4 p-4">
             <img
-              src="https://docs.material-tailwind.com/img/logo-ct-dark.png"
+              src="/public/img/logo-BPS.png"
               alt="brand"
               className="h-8 w-8"
             />
-            <Typography variant="h5" color="blue-gray">
-              Sidebar
+            <Typography variant="h5" color="white" className="uppercase italic">
+              <h1 className="text-white italic"></h1>SBO-BPS
             </Typography>
           </div>
           <div className="p-2">
             <Input
+              style={{ backgroundColor: "white" }}
               icon={<MagnifyingGlassIcon className="h-5 w-5" />}
               label="Search"
             />
           </div>
-          <List>
+          <List className="text-white">
             <Accordion
               open={open === 1}
               icon={
@@ -98,15 +99,15 @@ export function SidebarWithBurgerMenu() {
                   className="border-b-0 p-3"
                 >
                   <ListItemPrefix>
-                    <PresentationChartBarIcon className="h-5 w-5" />
+                    <PresentationChartBarIcon className="h-5 w-5 text-white" />
                   </ListItemPrefix>
-                  <Typography color="blue-gray" className="mr-auto font-normal">
+                  <Typography color="white" className="mr-auto font-normal">
                     Dashboard
                   </Typography>
                 </AccordionHeader>
               </ListItem>
               <AccordionBody className="py-1">
-                <List className="p-0">
+                <List className="p-0 text-white">
                   <ListItem>
                     <ListItemPrefix>
                       <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
@@ -145,15 +146,15 @@ export function SidebarWithBurgerMenu() {
                   className="border-b-0 p-3"
                 >
                   <ListItemPrefix>
-                    <ShoppingBagIcon className="h-5 w-5" />
+                    <ShoppingBagIcon className="h-5 w-5 text-white" />
                   </ListItemPrefix>
-                  <Typography color="blue-gray" className="mr-auto font-normal">
+                  <Typography color="white" className="mr-auto font-normal">
                     E-Commerce
                   </Typography>
                 </AccordionHeader>
               </ListItem>
               <AccordionBody className="py-1">
-                <List className="p-0">
+                <List className="p-0 text-white">
                   <ListItem>
                     <ListItemPrefix>
                       <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />

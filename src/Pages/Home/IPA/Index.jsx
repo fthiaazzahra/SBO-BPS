@@ -1,14 +1,13 @@
 import Footer from "../../../Components/Navbar/Footer/Footer";
 import Navbar from "../../../Components/Navbar/Index";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 // import ScatterChart from "./Chart/DiagramKartesius";
 import "animate.css";
 import ScatterChart from "./DiagramKartesius";
-
 import { Dropdown } from "primereact/dropdown";
 
 // import Triwulan from "./DropdownTriwulan";
@@ -62,18 +61,12 @@ export default function ApaPage() {
             </div>
             <div className="card flex justify-content-center">
               <form className="max-w-sm mx-auto">
-                <select
+                <Dropdown
                   value={selectedTriwulan}
                   onChange={(e) => setSelectedTriwulan(e.target.value)}
-                  id="countries"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                >
-                  <option selected>Triwulan</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                </select>
+                  options={["1", "2", "3", "4"]}
+                  placeholder="Pilih Triwulan"
+                />
               </form>
             </div>
           </div>

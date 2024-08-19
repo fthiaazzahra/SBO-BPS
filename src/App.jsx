@@ -23,6 +23,12 @@ import ApaPage from "./Pages/Home/IPA/Index";
 
 import HomeAdmin from "./PagesAdmin/Home/Home";
 import PostCoba from "./Pages/FormPegawaiTeladan/PostTest";
+import PegawaiPage from "./PagesAdmin/pagesAdmin/pegawai";
+import HakAksesPage from "./PagesAdmin/pagesAdmin/hak-akses";
+import HitungNilaiPegawaiTeladan from "./PagesAdmin/pagesAdmin/hitungSurveyPegawaiTeladan/hitung";
+import HasilHitungPegawaiTeladan from "./PagesAdmin/pagesAdmin/hasilSurvey/pegawaiTeladan";
+import HasilSurveySBO from "./PagesAdmin/pagesAdmin/hasilSurvey/SBO";
+import HitungNilaiSBO from "./PagesAdmin/pagesAdmin/hitungSurveySBO";
 
 function App() {
   return (
@@ -30,6 +36,18 @@ function App() {
       <Routes>
         <Route path="/coba" element={<PostCoba />} />
         <Route path="/admin/home" element={<HomeAdmin />} />
+        <Route path="/admin/pegawai" element={<PegawaiPage />} />
+        <Route path="/admin/hak-akses" element={<HakAksesPage />} />
+        <Route
+          path="/admin/hitung-nilai-pegawai-teladan"
+          element={<HitungNilaiPegawaiTeladan />}
+        />
+        <Route path="/admin/hitung-nilai-sbo" element={<HitungNilaiSBO />} />
+        <Route
+          path="/admin/hasil-nilai-pegawai-teladan"
+          element={<HasilHitungPegawaiTeladan />}
+        />
+        <Route path="/admin/hasil-nilai-SBO" element={<HasilSurveySBO />} />
 
         <Route path="/" element={<HomePage />} />
         <Route path="/diagram-indikator" element={<DiagramIndikatorPage />} />

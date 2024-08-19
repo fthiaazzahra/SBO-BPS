@@ -4,9 +4,21 @@ import Navbar from "../../../Components/Navbar/Index";
 // import ScatterChart from "./Chart/DiagramKartesius";
 import "animate.css";
 import Diagram1 from "../Chart/DiagramIndikator/Diagram1";
+import DatePicker from "react-datepicker";
+import { useState } from "react";
+import { Dropdown } from "primereact/dropdown";
 // import Triwulan from "./DropdownTriwulan";
 
 export default function DiagramIndikatorPage() {
+  const [selectedTriwulan, setSelectedTriwulan] = useState("1");
+  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
+
+  const currentYear = new Date().getFullYear();
+  const startYear = 1900;
+  const years = Array.from(
+    { length: currentYear - startYear + 1 },
+    (_, i) => currentYear - i
+  );
   return (
     <div className="">
       <Navbar />
@@ -25,7 +37,31 @@ export default function DiagramIndikatorPage() {
               </p>
             </div>
 
-            <Diagram1 />
+            <div className="flex gap-4">
+              <Dropdown
+                style={{
+                  border: "1px solid #9CA3AF",
+                  borderRadius: "6px",
+                }}
+                id="year-dropdown"
+                value={selectedYear}
+                options={years}
+                onChange={(e) => setSelectedYear(e.value)}
+                placeholder="Pilih Tahun"
+              />
+              <Dropdown
+                style={{
+                  height: "40px",
+                  border: "1px solid #D0D5DD",
+                  borderRadius: "8px",
+                }}
+                value={selectedTriwulan}
+                onChange={(e) => setSelectedTriwulan(e.value)}
+                options={["1", "2", "3", "4"]}
+                placeholder="Triwulan"
+              />
+            </div>
+            <Diagram1 tahun={selectedYear} triwulan={selectedTriwulan} />
           </div>
         </section>
       </div>

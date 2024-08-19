@@ -1,36 +1,18 @@
 import { RadioButton } from "primereact/radiobutton";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Toast } from "primereact/toast";
 import axios from "axios";
 
-const dataLeader = [
-  { name: `Pegawai memahami dan memenuhi kebutuhan masyarakat`, key: "1" },
-  { name: `Pegawai ramah, cekatan, solutif dan dapat diandalkan.`, key: "2" },
-  { name: `Pegawai melakukan perbaikan tiada henti.`, key: "3" },
-  {
-    name: `Pegawai melaksanakan tugas dengan jujur, bertanggungjawab, cermat, disiplin dan berintegritas tinggi `,
-    key: "4",
-  },
-  {
-    name: `Pegawai menggunakan kekayaan dan barang milik negara secara bertanggung jawab, efektif, dan efisien `,
-    key: "5",
-  },
-  { name: `Pegawai tidak menyalahgunakan kewenangan jabatan`, key: "6" },
-  {
-    name: ` Pegawai meningkatkan kompetensi diri untuk menjawab tantangan yang selalu berubah`,
-    key: "7",
-  },
-  { name: `Pegawai membantu orang lain belajar`, key: "8" },
-];
-
 const categories = [
-  { name: "1", key: "1" },
-  { name: "2", key: "2" },
-  { name: "3", key: "3" },
-  { name: "4", key: "4" },
+  { name: 1, key: 1 },
+  { name: 2, key: 2 },
+  { name: 3, key: 3 },
+  { name: 4, key: 4 },
 ];
 
 const FormLeader = () => {
+  const [desable, setDesable] = useState(false);
+  const [dataLeader, setDataLeader] = useState([]);
   const toastCenter = useRef(null);
   const [loader, setLoader] = useState(false);
   const [harapanSelections, setHarapanSelections] = useState(
@@ -39,7 +21,23 @@ const FormLeader = () => {
   const [kinerjaSelections, setKinerjaSelections] = useState(
     new Array(dataLeader.length).fill(null)
   );
-  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const getPertanyaan = async () => {
+      try {
+        const response = await axios.get(
+          "https://aang.umkmpalangan.my.id/pertanyaan_leadership_get"
+        );
+        setDataLeader(response.data);
+        setHarapanSelections(new Array(response.data.length).fill(null));
+        setKinerjaSelections(new Array(response.data.length).fill(null));
+      } catch (error) {
+        setLoader(false);
+        console.error(error);
+      }
+    };
+    getPertanyaan();
+  }, []);
 
   const showMessage = (severity, summary, detail) => {
     toastCenter.current.show({
@@ -60,40 +58,31 @@ const FormLeader = () => {
     });
   };
 
-  const validateForm = () => {
-    const allAnsweredHarapan = harapanSelections.every(
-      (selection) => selection !== null
-    );
-    const allAnsweredKinerja = kinerjaSelections.every(
-      (selection) => selection !== null
-    );
-    if (!allAnsweredHarapan || !allAnsweredKinerja) {
-      setError("Semua pertanyaan harus dijawab.");
-      return false;
-    }
-    setError(null);
-    return true;
-  };
+  const handleSavePeople = async (e) => {
+    e.preventDefault();
 
-  const handleSavePeople = async () => {
-    if (!validateForm()) {
-      showMessage("error", "Error", error);
+    if (harapanSelections.includes(null) || kinerjaSelections.includes(null)) {
+      showMessage("warn", "Peringatan", "Semua pertanyaan harus diisi!");
       return;
     }
     try {
       setLoader(true);
-      const response = await axios.post("http://localhost:5000/isiSurvey", {
-        triwulan: localStorage.getItem("triwulan"),
-        label: "LeadBO",
-        nama: localStorage.getItem("name"),
-        jenis_kelamin: localStorage.getItem("gender"),
-        umur: localStorage.getItem("umur"),
-        pendidikan: localStorage.getItem("Pendidikan"),
-        masa_kerja: localStorage.getItem("timeKerja"),
-        score_harapan: harapanSelections,
-        score_kinerja: kinerjaSelections,
-      });
+      const response = await axios.post(
+        "https://aang.umkmpalangan.my.id/isiSurvey",
+        {
+          triwulan: localStorage.getItem("triwulan"),
+          label: "LeadBO",
+          nama: localStorage.getItem("name"),
+          jenis_kelamin: localStorage.getItem("gender"),
+          umur: localStorage.getItem("umur"),
+          pendidikan: localStorage.getItem("Pendidikan"),
+          masa_kerja: localStorage.getItem("timeKerja"),
+          score_harapan: harapanSelections,
+          score_kinerja: kinerjaSelections,
+        }
+      );
       if (response.status === 201) {
+        setDesable(true);
         showMessage("success", "Success", "Jawaban Kamu Berhasil Disimpan");
       }
       setLoader(false);
@@ -109,12 +98,12 @@ const FormLeader = () => {
       <div className="flex flex-col h-12rem gap-7">
         {dataLeader.map((item, index) => (
           <div
-            key={item.key}
+            key={item.nomor}
             className="border-2 flex flex-col gap-4 py-4 px-4 rounded-md shadow-md p-2 surface-border border-round surface-ground align-items-center font-medium"
           >
             <div className="pb-4 flex gap-2">
-              <span className="rounded-full text-black">{item.key}</span>
-              <p className="text-justify">{item.name}</p>
+              <span className="rounded-full text-black">{item.nomor}</span>
+              <p className="text-justify">{item.pertanyaan_leadership}</p>
             </div>
             <div className="card flex justify-center w-full">
               <div className="flex flex-col lg:flex-row md:justify-center gap-4 md:gap-20 w-full">
@@ -182,7 +171,9 @@ const FormLeader = () => {
 
       <div className="flex justify-end mt-4 items-center">
         <button
-          className="inline-block rounded bg-indigo-600 px-4 py-2 font-medium text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-indigo-500"
+          className={`inline-block rounded bg-indigo-600 px-4 py-2 font-medium text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-indigo-500 ${
+            desable ? "hidden" : "block"
+          }`}
           onClick={handleSavePeople}
         >
           {loader ? (

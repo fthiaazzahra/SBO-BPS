@@ -22,44 +22,12 @@ const EndQuist = () => {
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <a
                 className="block w-full rounded border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto"
-                href="#"
+                href="/"
               >
                 Selesai
               </a>
 
               {/* Open the modal using document.getElementById('ID').showModal() method */}
-              <button
-                className=""
-                onClick={() =>
-                  document.getElementById("my_modal_1").showModal()
-                }
-              >
-                <a
-                  className="block w-full rounded border border-blue-600 px-12 py-3 text-sm font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring active:bg-blue-500 sm:w-auto"
-                  href="#"
-                >
-                  Isi Suervey Pegawai Teladan
-                </a>
-              </button>
-              <dialog id="my_modal_1" className=" border rounded-md">
-                <div className="p-8">
-                  <h3 className="font-bold text-lg">!!!</h3>
-                  <p className="text-black">
-                    Apakah sudah sempat mengisi survei untuk pegawai teladan?
-                  </p>
-                  <div className="modal-action flex justify-center">
-                    <form method="dialog" className="flex gap-4">
-                      {/* if there is a button in form, it will close the modal */}
-                      <button className="p-2 rounded-md text-sm bg-[#E9781A] text-white">
-                        Sudah Mengisi
-                      </button>
-                      <button className="p-2 rounded-md text-sm bg-blue-500 text-white">
-                        Lanjut Mengisi
-                      </button>
-                    </form>
-                  </div>
-                </div>
-              </dialog>
             </div>
           </div>
         </div>

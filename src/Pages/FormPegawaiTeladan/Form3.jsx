@@ -1,9 +1,11 @@
+/* eslint-disable no-unused-vars */
 import axios from "axios";
 import { RadioButton } from "primereact/radiobutton";
 import { useState } from "react";
 import Select from "react-select";
 import { Toast } from "primereact/toast";
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 const data = [
   { name: `Pegawai memahami dan memenuhi kebutuhan masyarakat`, key: "1" },
@@ -23,7 +25,7 @@ const data = [
     key: "7",
   },
   { name: `Pegawai membantu orang lain belajar`, key: "8" },
-  { name: `Pegawai membantu orang lain belajar`, key: "9" },
+  { name: ` Pegawai melaksanakan tugas dengan kualitas terbaik.`, key: "9" },
   {
     name: `Pegawai menghargai setiap orang apapun latar belakangnya`,
     key: "10",
@@ -35,7 +37,7 @@ const data = [
     key: "13",
   },
   {
-    name: `Pegawai memegang teguh ideologi Pancasila,Undang-Undang Dasar Negara Republik Indonesia tahun 1945, setia kepada Negara Kesatuan Republik Indonesia serta pemerintahan yang sah`,
+    name: `Pegawai menjaga nama baik sesama ASN, pimpinan, instansi, dan negara.`,
     key: "14",
   },
   { name: `Pegawai menjaga rahasia jabatan dan negara`, key: "15" },
@@ -65,6 +67,13 @@ const options = [
   { value: "ika", label: "Ika Nuryani, SST, M.Stat." },
 ];
 
+const optionsTriwulan = [
+  { value: "1", label: "1" },
+  { value: "2", label: "2" },
+  { value: "3", label: "3" },
+  { value: "4", label: "4" },
+];
+
 const categories = [
   { name: "1", key: "1" },
   { name: "2", key: "2" },
@@ -73,11 +82,15 @@ const categories = [
 ];
 
 const FormKandidat3 = () => {
+  const navigate = useNavigate();
+  const [desable, setDesable] = useState(false);
   const toastCenter = useRef(null);
   const [load, setLoad] = useState(false);
   const [selectedCandidate, setSelectedCandidate] = useState(null);
-
+  const [selectedTriwulan, setSelectedTriwulan] = useState(null);
+  // eslint-disable-next-line no-unused-vars
   const { value, label } = selectedCandidate || {};
+  const { value: valueTriwulan, label: labelTriwulan } = selectedTriwulan || {};
 
   const showMessage = (event, ref, severity, detail) => {
     ref.current.show({
@@ -90,7 +103,7 @@ const FormKandidat3 = () => {
 
   // Inisialisasi state selections sebagai array dengan panjang yang sama dengan jumlah pertanyaan
   const [selections, setSelections] = useState(Array(data.length).fill(null));
-  console.log(selections);
+
   const [
     pertanyaan_1,
     pertanyaan_2,
@@ -150,16 +163,17 @@ const FormKandidat3 = () => {
     try {
       setLoad(true);
       await axios.post(
-        "http://localhost:5000/survey_karyawan_teladan",
+        "https://aang.umkmpalangan.my.id/survey_karyawan_teladan",
         {
+          triwulan: "2",
           nama_lengkap: localStorage.getItem("nama"),
           nip: localStorage.getItem("nip"),
           jenis_kelamin: localStorage.getItem("jkl"),
           pendidikan: localStorage.getItem("pendidikan"),
           umur: localStorage.getItem("umur"),
           masa_kerja: localStorage.getItem("masaKerja"),
-          nomor_kandidat: `kandidat 3`,
-          nama_kandidat: label,
+          nomor_kandidat: `Kandidat 3`,
+          nama_kandidat: "Nani Hendrayani, S.IP",
           pertanyaan_1: pertanyaan_1,
           pertanyaan_2: pertanyaan_2,
           pertanyaan_3: pertanyaan_3,
@@ -193,8 +207,11 @@ const FormKandidat3 = () => {
       setTimeout(() => {
         setLoad(false);
         showMessage(e, toastCenter, "success", "Data Berhasil Disimpan");
+        setDesable(true);
+        navigate("/finish-survey");
       }, 3000);
     } catch (error) {
+      setLoad(false);
       showMessage(e, toastCenter, "error", "Please fill out all fields");
     }
   };
@@ -203,17 +220,37 @@ const FormKandidat3 = () => {
     setSelectedCandidate(selectedOption);
   };
   console.log(selectedCandidate);
-
+  const handleTriwulan = (selectedOption) => {
+    setSelectedTriwulan(selectedOption);
+  };
   return (
     <div className="flex flex-col h-12rem gap-7 items-center ">
       <div className="form-group w-full lg:w-1/2">
-        <Select
+        <div className="flex items-stretch gap-4">
+          <img
+            src="/img/hijab.avif"
+            alt=""
+            className="aspect-square w-20 rounded-lg object-cover"
+          />
+
+          <div>
+            <h3 className="text-lg/tight font-medium text-gray-900">
+              Nani Hendrayani, S.IP
+            </h3>
+
+            <p className="mt-0.5 text-gray-700">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Voluptates voluptas distinctio nesciunt quas non animi.
+            </p>
+          </div>
+        </div>
+        {/* <Select
           id="pegawaiSelect"
-          value={selectedCandidate}
-          onChange={handleCandidateChange}
-          options={options}
-          placeholder="Pilih Pegawai"
-        />
+          value={selectedTriwulan}
+          onChange={handleTriwulan}
+          options={optionsTriwulan}
+          placeholder="Pilih Triwulan"
+        /> */}
       </div>
       {data.map((item, idx) => (
         // Render setiap item dalam data sebagai div terpisah
@@ -259,11 +296,16 @@ const FormKandidat3 = () => {
         </div>
       ))}
       <div className="w-full flex justify-end">
-        <button onClick={handleSubmit} className="btn bg-blue-500 text-white">
+        <button
+          onClick={handleSubmit}
+          className={`inline-block rounded bg-green-500 px-4 py-2 font-medium text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-indigo-500 ${
+            desable ? "hidden" : "block"
+          }`}
+        >
           {load ? (
             <span className="loading loading-dots loading-md "></span>
           ) : (
-            "Submit"
+            "Submit and Finish"
           )}
         </button>
       </div>

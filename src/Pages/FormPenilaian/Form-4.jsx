@@ -1,79 +1,44 @@
 import { RadioButton } from "primereact/radiobutton";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Toast } from "primereact/toast";
 import axios from "axios";
 
-const dataPeople = [
-  { name: `Pegawai memahami dan memenuhi kebutuhan masyarakat`, key: "1" },
-  { name: `Pegawai ramah, cekatan, solutif dan dapat diandalkan.`, key: "2" },
-  { name: `Pegawai melakukan perbaikan tiada henti.`, key: "3" },
-  {
-    name: `Pegawai melaksanakan tugas dengan jujur, bertanggungjawab, cermat, disiplin dan berintegritas tinggi `,
-    key: "4",
-  },
-  {
-    name: `Pegawai menggunakan kekayaan dan barang milik negara secara bertanggung jawab, efektif, dan efisien `,
-    key: "5",
-  },
-  { name: `Pegawai tidak menyalahgunakan kewenangan jabatan`, key: "6" },
-  {
-    name: ` Pegawai meningkatkan kompetensi diri untuk menjawab tantangan yang selalu berubah`,
-    key: "7",
-  },
-  { name: `Pegawai membantu orang lain belajar`, key: "8" },
-  { name: `Pegawai membantu orang lain belajar`, key: "9" },
-  {
-    name: `Pegawai menghargai setiap orang apapun latar belakangnya`,
-    key: "10",
-  },
-  { name: `Pegawai suka menolong orang lain`, key: "11" },
-  { name: `Pegawai membangun lingkungan kerja yang kondusif`, key: "12" },
-  {
-    name: `Pegawai memegang teguh ideologi Pancasila,Undang-Undang Dasar Negara Republik Indonesia tahun 1945, setia kepada Negara Kesatuan Republik Indonesia serta pemerintahan yang sah`,
-    key: "13",
-  },
-  {
-    name: `Pegawai memegang teguh ideologi Pancasila,Undang-Undang Dasar Negara Republik Indonesia tahun 1945, setia kepada Negara Kesatuan Republik Indonesia serta pemerintahan yang sah`,
-    key: "14",
-  },
-  { name: `Pegawai menjaga rahasia jabatan dan negara`, key: "15" },
-  { name: ` Pegawai cepat menyesuaikan diri menghadapi perubahan`, key: "16" },
-  {
-    name: ` Pegawai terus berinovasi dan mengembangkan kreativitas`,
-    key: "17",
-  },
-  { name: `Pegawai bertindak proaktif `, key: "18" },
-  {
-    name: `Pegawai memberi kesempatan kepada berbagai pihak untuk berkontribusi`,
-    key: "19",
-  },
-  {
-    name: `Pegawai terbuka dalam bekerja sama untuk menghasilkan nilai tambah`,
-    key: "20",
-  },
-  {
-    name: `Pegawai menggerakkan pemanfaatan berbagai sumberdaya untuk tujuan bersama`,
-    key: "21",
-  },
-];
-
 const categories = [
-  { name: "1", key: "1" },
-  { name: "2", key: "2" },
-  { name: "3", key: "3" },
-  { name: "4", key: "4" },
+  { name: 1, key: 1 },
+  { name: 2, key: 2 },
+  { name: 3, key: 3 },
+  { name: 4, key: 4 },
 ];
 
 const FormPeople = () => {
+  const [desable, setDesable] = useState(false);
+  const [dataPeople, setDataPeople] = useState([]);
   const toastCenter = useRef(null);
   const [loader, setLoader] = useState(false);
-  const [harapanSelections, setHarapanSelections] = useState(
-    new Array(dataPeople.length).fill(null)
-  );
-  const [kinerjaSelections, setKinerjaSelections] = useState(
-    new Array(dataPeople.length).fill(null)
-  );
+  const [harapanSelections, setHarapanSelections] = useState([]);
+  const [kinerjaSelections, setKinerjaSelections] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const getPertanyaan = async () => {
+      try {
+        const response = await axios.get(
+          "https://aang.umkmpalangan.my.id/pertanyaan_people_get"
+        );
+        setDataPeople(response.data);
+      } catch (error) {
+        setLoader(false);
+        console.error(error);
+      }
+    };
+    getPertanyaan();
+  }, []);
+
+  useEffect(() => {
+    setHarapanSelections(new Array(dataPeople.length).fill(null));
+    setKinerjaSelections(new Array(dataPeople.length).fill(null));
+  }, [dataPeople]);
 
   const showMessage = (severity, summary, detail) => {
     toastCenter.current.show({
@@ -94,41 +59,33 @@ const FormPeople = () => {
     });
   };
 
-  const validateForm = () => {
-    const allAnsweredHarapan = harapanSelections.every(
-      (selection) => selection !== null
-    );
-    const allAnsweredKinerja = kinerjaSelections.every(
-      (selection) => selection !== null
-    );
-    if (!allAnsweredHarapan || !allAnsweredKinerja) {
-      setError("Semua pertanyaan harus dijawab.");
-      return false;
-    }
-    setError(null);
-    return true;
-  };
+  const handleSavePeople = async (e) => {
+    e.preventDefault();
 
-  const handleSavePeople = async () => {
-    if (!validateForm()) {
-      showMessage("error", "Error", error);
+    if (harapanSelections.includes(null) || kinerjaSelections.includes(null)) {
+      showMessage("warn", "Peringatan", "Semua pertanyaan harus diisi!");
       return;
     }
+
     try {
       setLoader(true);
-      const response = await axios.post("http://localhost:5000/isiSurvey", {
-        triwulan: localStorage.getItem("triwulan"),
-        label: "PeBO",
-        nama: localStorage.getItem("name"),
-        jenis_kelamin: localStorage.getItem("gender"),
-        umur: localStorage.getItem("umur"),
-        pendidikan: localStorage.getItem("Pendidikan"),
-        masa_kerja: localStorage.getItem("timeKerja"),
-        score_harapan: harapanSelections,
-        score_kinerja: kinerjaSelections,
-      });
+      const response = await axios.post(
+        "https://aang.umkmpalangan.my.id/isiSurvey",
+        {
+          triwulan: localStorage.getItem("triwulan"),
+          label: "PeBO",
+          nama: localStorage.getItem("name"),
+          jenis_kelamin: localStorage.getItem("gender"),
+          umur: localStorage.getItem("umur"),
+          pendidikan: localStorage.getItem("Pendidikan"),
+          masa_kerja: localStorage.getItem("timeKerja"),
+          score_harapan: harapanSelections,
+          score_kinerja: kinerjaSelections,
+        }
+      );
       if (response.status === 201) {
         showMessage("success", "Success", "Jawaban Kamu Berhasil Disimpan");
+        setDesable(true);
       }
       setLoader(false);
     } catch (error) {
@@ -143,12 +100,12 @@ const FormPeople = () => {
       <div className="flex flex-col h-12rem gap-7">
         {dataPeople.map((item, index) => (
           <div
-            key={item.key}
+            key={item.nomor}
             className="border-2 flex flex-col gap-4 py-4 px-4 rounded-md shadow-md p-2 surface-border border-round surface-ground align-items-center font-medium"
           >
             <div className="pb-4 flex gap-2">
-              <span className="rounded-full text-black">{item.key}</span>
-              <p className="text-justify">{item.name}</p>
+              <span className="rounded-full text-black">{item.nomor}</span>
+              <p className="text-justify">{item.pertanyaan_people}</p>
             </div>
             <div className="card flex justify-center w-full">
               <div className="flex flex-col lg:flex-row md:justify-center gap-4 md:gap-20 w-full">
@@ -216,7 +173,9 @@ const FormPeople = () => {
 
       <div className="flex justify-end mt-4 items-center">
         <button
-          className="inline-block rounded bg-indigo-600 px-4 py-2 font-medium text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-indigo-500"
+          className={`inline-block rounded bg-indigo-600 px-4 py-2 font-medium text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-indigo-500 ${
+            desable ? "hidden" : "block"
+          }`}
           onClick={handleSavePeople}
         >
           {loader ? (

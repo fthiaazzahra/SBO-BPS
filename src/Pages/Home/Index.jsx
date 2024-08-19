@@ -42,10 +42,10 @@ export default function HomePage() {
         </section>
 
         <section className="bg-[#002B6A] text-white">
-          <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+          <div className="mx-auto w-full px-4 py-8 sm:px-6 sm:py-12 lg:px-16 lg:py-16">
             <div className="mx-auto max-w-lg text-center">
-              <h2 className="text-3xl font-bold sm:text-4xl">
-                Kickstart your marketing
+              <h2 className="uppercase text-xl font-bold sm:text-4xl">
+                Penilaian Budaya Organisasi BPS Kabupaten Tasikmalaya
               </h2>
 
               <p className="mt-4 text-white">
@@ -55,9 +55,9 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
+            <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 px-4 md:px-10">
               <a
-                className="block bg-white rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-[#E9781A]"
+                className="pointer-events-none bg-white rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-[#E9781A]"
                 href="/giagram-indikator"
               >
                 <svg
@@ -119,7 +119,7 @@ export default function HomePage() {
               </a>
 
               <a
-                className="block bg-white rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-[#E9781A]"
+                className="block disabled bg-white rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-[#E9781A]"
                 href="/diagram-indikator"
               >
                 <svg
@@ -221,7 +221,7 @@ export default function HomePage() {
               </div>
             </div>
           </div> */}
-          <div className=" flex flex-col justify-center items-center px-10 pb-10">
+          <div className=" flex flex-col justify-center items-center px-8 md:px-16 py-20">
             <h1 className="text-3xl font-bold uppercase border-b-8 border-[#E9781A]">
               Pegawai Teladan
             </h1>

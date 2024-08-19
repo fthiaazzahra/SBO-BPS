@@ -1,98 +1,181 @@
 const PegawaiTeladan = () => {
   return (
-    <div className="grid md:grid-cols-4 gap-4">
-      <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 relative">
-        <a href="#">
-          <img
-            className="rounded-t-lg"
-            src="https://upload.wikimedia.org/wikipedia/commons/2/21/Gibran_Rakabuming_Raka,_Candidate_for_Vice_President_of_Indonesia_2024.jpg"
-            alt=""
-          />
-        </a>
-        <div className="p-5">
-          <a href="#">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              Nama Pegawai Teladan
-            </h5>
-          </a>
-          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            Here are the biggest enterprise technology acquisitions of 2021 so
-            far, in reverse chronological order.
-          </p>
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4  border w-full">
+      <a
+        href="#"
+        className="group relative block overflow-hidden border rounded-md shadow-lg"
+      >
+        <button className="absolute end-4 top-4 z-10 rounded-full bg-white   p-1.5 text-gray-900 transition hover:text-gray-900/75">
+          <span className="sr-only">Wishlist</span>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className="h-4 w-4"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
+            />
+          </svg>
+        </button>
+
+        <img
+          src={`/img/isma.png`}
+          alt=""
+          className="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
+        />
+
+        <div className="relative border border-gray-100 bg-white p-6">
+          <span className="whitespace-nowrap bg-yellow-400 px-3 py-1.5 text-xs font-medium">
+            {" "}
+            New{" "}
+          </span>
+
+          <h3 className="mt-4 text-lg font-medium text-gray-900">
+            Isma Irmawati, A.MD
+          </h3>
+
+          <form className="mt-4">
+            <button className="block w-full rounded bg-yellow-400 p-4 text-sm font-medium transition hover:scale-105">
+              Pegawai Teladan Triwulan 1
+            </button>
+          </form>
         </div>
-        <div className="border w-full absolute bottom-0 p-4 flex justify-center items-center">
-          <span className="text-center">50%</span>
+      </a>
+      <a
+        href="#"
+        className="group relative block overflow-hidden border rounded-md shadow-lg"
+      >
+        <button className="absolute end-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75">
+          <span className="sr-only">Wishlist</span>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className="h-4 w-4"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
+            />
+          </svg>
+        </button>
+
+        <img
+          src={`/img/th.jpeg`}
+          alt=""
+          className="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
+        />
+
+        <div className="relative border border-gray-100 bg-white p-6">
+          <span className="whitespace-nowrap bg-yellow-400 px-3 py-1.5 text-xs font-medium">
+            {" "}
+            New{" "}
+          </span>
+
+          <h3 className="mt-4 text-lg font-medium text-gray-900">Nama</h3>
+
+          <form className="mt-4">
+            <button className="block w-full rounded bg-yellow-400 p-4 text-sm font-medium transition hover:scale-105">
+              Pegawai Teladan Triwulan 2
+            </button>
+          </form>
         </div>
-      </div>
-      <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 relative">
-        <a href="#">
-          <img
-            className="rounded-t-lg"
-            src="https://upload.wikimedia.org/wikipedia/commons/2/21/Gibran_Rakabuming_Raka,_Candidate_for_Vice_President_of_Indonesia_2024.jpg"
-            alt=""
-          />
-        </a>
-        <div className="p-5">
-          <a href="#">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              Nama Pegawai Teladan
-            </h5>
-          </a>
-          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            Here are the biggest enterprise technology acquisitions of 2021 so
-            far, in reverse chronological order.
-          </p>
+      </a>
+      <a
+        href="#"
+        className="group relative block overflow-hidden border rounded-md shadow-lg"
+      >
+        <button className="absolute end-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75">
+          <span className="sr-only">Wishlist</span>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className="h-4 w-4"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
+            />
+          </svg>
+        </button>
+
+        <img
+          src={`/img/th.jpeg`}
+          alt=""
+          className="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
+        />
+
+        <div className="relative border border-gray-100 bg-white p-6">
+          <span className="whitespace-nowrap bg-yellow-400 px-3 py-1.5 text-xs font-medium">
+            {" "}
+            New{" "}
+          </span>
+
+          <h3 className="mt-4 text-lg font-medium text-gray-900">Nama</h3>
+
+          <form className="mt-4">
+            <button className="block w-full rounded bg-yellow-400 p-4 text-sm font-medium transition hover:scale-105">
+              Pegawai Teladan Triwulan 3
+            </button>
+          </form>
         </div>
-        <div className="border w-full absolute bottom-0 p-4 flex justify-center items-center">
-          <span className="text-center">50%</span>
+      </a>
+      <a className="group relative block overflow-hidden border rounded-md shadow-lg">
+        <button className="absolute end-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75">
+          <span className="sr-only">Wishlist</span>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className="h-4 w-4"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
+            />
+          </svg>
+        </button>
+
+        <img
+          src={`/img/th.jpeg`}
+          alt=""
+          className="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
+        />
+
+        <div className="relative border border-gray-100 bg-white p-6">
+          <span className="whitespace-nowrap bg-yellow-400 px-3 py-1.5 text-xs font-medium">
+            {" "}
+            New{" "}
+          </span>
+
+          <h3 className="mt-4 text-lg font-medium text-gray-900">Nama</h3>
+
+          <form className="mt-4">
+            <button className="block w-full rounded bg-yellow-400 p-4 text-sm font-medium transition hover:scale-105">
+              Pegawai Teladan Triwulan 4
+            </button>
+          </form>
         </div>
-      </div>
-      <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 relative">
-        <a href="#">
-          <img
-            className="rounded-t-lg"
-            src="https://upload.wikimedia.org/wikipedia/commons/2/21/Gibran_Rakabuming_Raka,_Candidate_for_Vice_President_of_Indonesia_2024.jpg"
-            alt=""
-          />
-        </a>
-        <div className="p-5">
-          <a href="#">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              Nama Pegawai Teladan
-            </h5>
-          </a>
-          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            Here are the biggest enterprise technology acquisitions of 2021 so
-            far, in reverse chronological order.
-          </p>
-        </div>
-        <div className="border w-full absolute bottom-0 p-4 flex justify-center items-center">
-          <span className="text-center">50%</span>
-        </div>
-      </div>
-      <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 relative">
-        <a href="#">
-          <img
-            className="rounded-t-lg"
-            src="https://upload.wikimedia.org/wikipedia/commons/2/21/Gibran_Rakabuming_Raka,_Candidate_for_Vice_President_of_Indonesia_2024.jpg"
-            alt=""
-          />
-        </a>
-        <div className="p-5">
-          <a href="#">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              Nama Pegawai Teladan
-            </h5>
-          </a>
-          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            Here are the biggest enterprise technology acquisitions of 2021 so
-            far, in reverse chronological order.
-          </p>
-        </div>
-        <div className="border w-full absolute bottom-0 p-4 flex justify-center items-center">
-          <span className="text-center">50%</span>
-        </div>
-      </div>
+      </a>
     </div>
   );
 };

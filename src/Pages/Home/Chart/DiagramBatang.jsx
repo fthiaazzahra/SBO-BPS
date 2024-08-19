@@ -1,9 +1,11 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { Chart } from "primereact/chart";
 
-export default function VerticalBarDemo() {
+export default function VerticalBarDemo({ newHarapan, newKinerja }) {
   const [chartData, setChartData] = useState({});
   const [chartOptions, setChartOptions] = useState({});
+  console.log(newHarapan);
 
   useEffect(() => {
     const documentStyle = getComputedStyle(document.documentElement);
@@ -19,13 +21,13 @@ export default function VerticalBarDemo() {
           label: "Harapan",
           backgroundColor: documentStyle.getPropertyValue("--yellow-500"),
           borderColor: documentStyle.getPropertyValue("--blue-500"),
-          data: [3.35, 3.36, 3.4, 81],
+          data: newHarapan,
         },
         {
           label: "Kinerja",
           backgroundColor: documentStyle.getPropertyValue("--blue-500"),
           borderColor: documentStyle.getPropertyValue("--pink-500"),
-          data: [3.77, 3.79, 3.79, 19],
+          data: newKinerja,
         },
       ],
     };
@@ -54,7 +56,7 @@ export default function VerticalBarDemo() {
         },
         y: {
           min: 0,
-          max: 5,
+          max: 100,
           ticks: {
             color: textColorSecondary,
           },
