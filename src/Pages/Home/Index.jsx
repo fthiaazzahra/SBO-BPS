@@ -44,14 +44,13 @@ export default function HomePage() {
         <section className="bg-[#002B6A] text-white">
           <div className="mx-auto w-full px-4 py-8 sm:px-6 sm:py-12 lg:px-16 lg:py-16">
             <div className="mx-auto max-w-lg text-center">
-              <h2 className="uppercase text-xl font-bold sm:text-4xl">
-                Penilaian Budaya Organisasi BPS Kabupaten Tasikmalaya
-              </h2>
+              <h4 className="uppercase text-xl font-bold sm:text-3xl">
+                Penilaian Budaya Organisasi
+                BPS Kabupaten Tasikmalaya
+              </h4>
 
               <p className="mt-4 text-white">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Consequuntur aliquam doloribus nesciunt eos fugiat. Vitae
-                aperiam fugit consequuntur saepe laborum.
+                
               </p>
             </div>
 
@@ -80,11 +79,6 @@ export default function HomePage() {
 
                 <h2 className="mt-4 text-xl font-bold text-black">Indikator</h2>
 
-                <p className="mt-1 text-sm text-black">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ut
-                  quo possimus adipisci distinctio alias voluptatum blanditiis
-                  laudantium.
-                </p>
               </a>
 
               <a
@@ -111,11 +105,7 @@ export default function HomePage() {
                   Gap Analiysis
                 </h2>
 
-                <p className="mt-1 text-sm text-black">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ut
-                  quo possimus adipisci distinctio alias voluptatum blanditiis
-                  laudantium.
-                </p>
+                
               </a>
 
               <a
@@ -151,11 +141,7 @@ export default function HomePage() {
                   Diagram Indikator
                 </h2>
 
-                <p className="mt-1 text-sm text-black">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ut
-                  quo possimus adipisci distinctio alias voluptatum blanditiis
-                  laudantium.
-                </p>
+               
               </a>
 
               <a
@@ -180,13 +166,9 @@ export default function HomePage() {
                   />
                 </svg>
 
-                <h2 className="mt-4 text-xl font-bold text-black">IPA</h2>
+                <h2 className="mt-4 text-xl font-bold text-black">Importance and Performance Analysis </h2>
 
-                <p className="mt-1 text-sm text-black">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ut
-                  quo possimus adipisci distinctio alias voluptatum blanditiis
-                  laudantium.
-                </p>
+               
               </a>
             </div>
           </div>

@@ -31,9 +31,7 @@ export default function DiagramIndikatorPage() {
               </h2>
 
               <p className="mt-4 text-black">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Consequuntur aliquam doloribus nesciunt eos fugiat. Vitae
-                aperiam fugit consequuntur saepe laborum.
+                
               </p>
             </div>
 

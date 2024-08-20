@@ -12,10 +12,10 @@ export default function Diagram() {
 
   const years = [2021, 2022, 2023, 2024];
   const quarters = [
-    { label: "Q1", value: 1 },
-    { label: "Q2", value: 2 },
-    { label: "Q3", value: 3 },
-    { label: "Q4", value: 4 },
+    { label: "Triwulan 1", value: 1 },
+    { label: "Triwulan 2", value: 2 },
+    { label: "Triwulan 3", value: 3 },
+    { label: "Triwulan 4", value: 4 },
   ];
 
   const fetchData = async (year, quarter) => {

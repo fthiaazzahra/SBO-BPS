@@ -10,7 +10,7 @@ const categories = [
   { name: 4, key: 4 },
 ];
 
-const FormPliker = () => {
+const FormPriker = () => {
   const [desable, setDesable] = useState(false);
   const [pertanyaan, setPertanyaan] = useState([]);
   const toastCenter = useRef(null);
@@ -185,4 +185,4 @@ const FormPliker = () => {
   );
 };
 
-export default FormPliker;
+export default FormPriker;
