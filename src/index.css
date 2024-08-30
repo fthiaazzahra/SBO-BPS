@@ -9,7 +9,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Inter" sans-serif;
 }
 .custom-placeholder .p-dropdown-label {
   color: white !important; /* Mengubah warna placeholder menjadi putih */
@@ -43,3 +43,13 @@ body {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#scrollableElement {
+  overflow: auto;
+  scrollbar-width: none; /* Untuk Firefox */
+  -ms-overflow-style: none; /* Untuk Internet Explorer dan Edge */
+}
+
+#scrollableElement::-webkit-scrollbar {
+  display: none; /* Untuk Chrome, Safari, dan Opera */
+}

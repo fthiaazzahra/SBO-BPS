@@ -73,10 +73,6 @@ const FormLeader = () => {
           triwulan: localStorage.getItem("triwulan"),
           label: "LeadBO",
           nama: localStorage.getItem("name"),
-          jenis_kelamin: localStorage.getItem("gender"),
-          umur: localStorage.getItem("umur"),
-          pendidikan: localStorage.getItem("Pendidikan"),
-          masa_kerja: localStorage.getItem("timeKerja"),
           score_harapan: harapanSelections,
           score_kinerja: kinerjaSelections,
         }

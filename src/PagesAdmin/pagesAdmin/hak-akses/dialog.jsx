@@ -1,27 +1,19 @@
 /* eslint-disable no-unused-vars */
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Button } from "primereact/button";
 import { UserPlusIcon } from "@heroicons/react/24/solid";
 import axios from "axios";
+import { Toast } from "primereact/toast";
 
 export default function DialogForm() {
   const [nip, setNip] = useState("");
   const [role, setRole] = useState("");
   const [password, setPassword] = useState("");
   const [confirmasi_password, setConfirmasiPassword] = useState("");
+  const toast = useRef(null);
 
-  const fetchData = async () => {
-    try {
-      await axios.post("https://aang.umkmpalangan.my.id/createAuth", {
-        nip: nip,
-        role: role,
-        password: password,
-        confirmasi_password: confirmasi_password,
-      });
-      alert("Data Berhasil");
-    } catch (error) {
-      alert(error);
-    }
+  const showToast = (severity, summary, detail) => {
+    toast.current.show({ severity, summary, detail });
   };
 
   const handleSubmit = async (e) => {
@@ -31,16 +23,28 @@ export default function DialogForm() {
       alert("Please fill in all fields");
       return;
     }
-    fetchData();
+    try {
+      await axios.post("https://aang.umkmpalangan.my.id/createAuth", {
+        nip: nip,
+        role: role,
+        password: password,
+        confirmasi_password: confirmasi_password,
+      });
+      showToast("success", "Added", "Data successfully added");
+      document.getElementById("my_modal_1").close();
+    } catch (error) {
+      alert(error);
+    }
   };
 
   return (
     <div className="card flex justify-content-center">
+      <Toast ref={toast} />
       <Button
         onClick={() => document.getElementById("my_modal_1").showModal()}
-        className="flex items-center gap-3 p-2 border border-black rounded-md"
+        className="flex items-center gap-3 p-2 bg-green-500 text-white rounded-md"
       >
-        <UserPlusIcon strokeWidth={2} className="h-4 w-4" /> Add Hak Akses
+        <UserPlusIcon strokeWidth={2} className="h-4 w-4" /> Add
       </Button>
       {/* Open the modal using document.getElementById('ID').showModal() method */}
 

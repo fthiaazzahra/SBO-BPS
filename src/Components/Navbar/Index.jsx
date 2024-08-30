@@ -12,7 +12,6 @@ import LoginUser from "../Login/LoginUser";
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const token = localStorage.getItem("token");
-  console.log(token);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,19 +39,21 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`bg-[#002B6A] border-gray-200 text-white fixed w-full z-[800] transition-all ease-in-out animate__animated animate__fadeInDown ${
+      className={`bg-[#002B6A]  border-gray-200 text-white fixed w-full z-[800] transition-all ease-in-out animate__animated animate__fadeInDown ${
         scrolled ? "h-20" : "h-28"
       }`}
     >
-      <div className="flex f items-center justify-between max-w-screen-xl mx-auto px-4 md:px-10  h-full">
-        <div className="flex items-center gap-2   h-full">
+      <div className="flex  items-center justify-between max-w-screen-xl mx-auto h-full">
+        <div className="flex items-center gap-2 h-full">
           <img src="/img/logo-BPS.png" alt="Logo BPS" className="h-16 w-20" />
-          <div className=" flex-col italic text-white font-semibold hidden lg:flex">
-            <span>BADAN PUSAT STATISTIK</span>
-            <span>KABUPATEN TASIKMALAYA</span>
+          <div className=" p-0 flex-col italic text-white font-semibold hidden lg:flex">
+            <h1 className="italic font-bold" style={{ fontStyle: "italic" }}>
+              BADAN PUSAT STATISTIK
+            </h1>
+            <h1 className="italic">KABUPATEN TASIKMALAYA</h1>
           </div>
           <div className="lg:hidden">
-            <span>BPS KABUPATEN TASIKMALAYA</span>
+            <span className="italic">BPS KABUPATEN TASIKMALAYA</span>
           </div>
         </div>
         <div className="sm:hidden">
@@ -78,82 +79,6 @@ const Navbar = () => {
               </a>
             </li>
 
-            {/* <li className="relative group">
-              <div className="dropdown dropdown-hover">
-                <div
-                  tabIndex={0}
-                  role="button"
-                  className="uppercase font-bold text-sm linve hover:text-[#E9781A]"
-                >
-                  Konsep Definisi
-                </div>
-                <span className="absolute left-0 bottom-[-4px] w-full h-1 bg-[#E9781A] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
-                <ul
-                  tabIndex={0}
-                  className="dropdown-content menu bg-base-100 rounded-sm z-[1] w-52 p-2 shadow"
-                >
-                  <li>
-                    <a
-                      href="/penilaian-budaya-organisasi"
-                      className="text-black"
-                    >
-                      Dasar Hukum
-                    </a>
-                  </li>
-                  <li>
-                    <a href="" className="text-black">
-                      Nilai-nilai Inti BPS
-                    </a>
-                  </li>
-                  <li>
-                    <a href="" className="text-black">
-                      Model Implementasi
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </li>
-
-            <li className="relative group">
-              <div className="dropdown dropdown-hover">
-                <div
-                  tabIndex={0}
-                  role="button"
-                  className="uppercase font-bold text-sm linve hover:text-[#E9781A]"
-                >
-                  Indikator Penilaian
-                </div>
-                <span className="absolute left-0 bottom-[-4px] w-full h-1 bg-[#E9781A] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
-                <ul
-                  tabIndex={0}
-                  className="dropdown-content menu bg-base-100 rounded-sm z-[1] w-52 p-2 shadow"
-                >
-                  <li>
-                    <a
-                      href="/penilaian-budaya-organisasi"
-                      className="text-black"
-                    >
-                      Perilaku Kerja Pegawai
-                    </a>
-                  </li>
-                  <li>
-                    <a href="" className="text-black">
-                      Leadership Budaya Organisasi
-                    </a>
-                  </li>
-                  <li>
-                    <a href="" className="text-black">
-                      People Budaya Organisasi
-                    </a>
-                  </li>
-                  <li>
-                    <a href="" className="text-black">
-                      System Budaya Organisasi
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </li> */}
             <li className="relative group h-full">
               <div className="dropdown dropdown-hover  h-full flex items-center ">
                 <div

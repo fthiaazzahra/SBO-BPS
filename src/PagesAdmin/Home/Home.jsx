@@ -39,7 +39,7 @@ const HomeAdmin = () => {
 
   return (
     <Layout>
-      <div className=" w-full bg-white h-screen overflow-y-auto">
+      <div id="scrollableElement" className=" w-full bg-white h-screen ">
         <div className="p-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-4">
           <Card className="shadow-lg p-4 bg-[#002B6A] rounded-lg">
             <div className="flex items-center">
@@ -50,7 +50,9 @@ const HomeAdmin = () => {
                 <h2 className="text-xl font-semibold text-white">
                   Jumlah Pegawai
                 </h2>
-                <p className="text-3xl text-white font-bold">{1}</p>
+                <p className="text-3xl text-white font-bold">
+                  {localStorage.getItem("totalPegawai")}
+                </p>
               </div>
             </div>
           </Card>
@@ -60,7 +62,7 @@ const HomeAdmin = () => {
                 <i className="pi pi-users text-2xl"></i>
               </div>
               <div className="ml-4 text-white">
-                <h2 className="text-xl font-semibold">Jumlah Pengisi Survey</h2>
+                <h2 className="text-xl font-semibold">Hak Akses Admin</h2>
                 <p className="text-3xl font-bold">{1}</p>
               </div>
             </div>
@@ -71,7 +73,7 @@ const HomeAdmin = () => {
                 <i className="pi pi-users text-2xl"></i>
               </div>
               <div className="ml-4 text-white">
-                <h2 className="text-xl font-semibold">Jumlah Pengisi Survey</h2>
+                <h2 className="text-xl font-semibold">Hak Akses Pegawai</h2>
                 <p className="text-3xl font-bold">{1}</p>
               </div>
             </div>

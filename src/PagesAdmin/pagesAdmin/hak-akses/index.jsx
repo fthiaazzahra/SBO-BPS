@@ -1,16 +1,12 @@
-import {
-  Button,
-  IconButton,
-  Input,
-  Typography,
-} from "@material-tailwind/react";
+import { IconButton, Input, Typography } from "@material-tailwind/react";
 import Layout from "../../Layout/Index";
 
 import { MagnifyingGlassIcon, PencilIcon } from "@heroicons/react/24/solid";
 
 import DialogForm from "./dialog";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Toast } from "primereact/toast";
 
 const HakAksesPage = () => {
   const [nip, setNip] = useState("");
@@ -20,6 +16,13 @@ const HakAksesPage = () => {
   const [searchTerm, setSearchTerm] = useState(""); // State untuk menyimpan kata kunci pencarian
   const [filteredData, setFilteredData] = useState([]); // State untuk menyimpan data yang difilter berdasarkan pencarian
   console.log(data);
+
+  const toast = useRef(null);
+
+  const showToast = (severity, summary, detail) => {
+    toast.current.show({ severity, summary, detail });
+  };
+
   const fetchData = async () => {
     try {
       const response = await axios.get(
@@ -61,10 +64,12 @@ const HakAksesPage = () => {
           },
         }
       );
-      alert("Data Berhasil Dihapus");
+      showToast("success", "Delete", "Data deleted successfully");
+      document.getElementById("my_modal_2").close();
       setData(data.filter((item) => item.nip !== nip)); // Update data setelah penghapusan
     } catch (error) {
-      alert(error);
+      showToast("Error", "Field", "Data fieled to delete");
+      document.getElementById("my_modal_2").close();
     }
   };
 
@@ -88,10 +93,12 @@ const HakAksesPage = () => {
           },
         }
       );
-      alert("Berhasil");
+      showToast("success", "Update", "Data successfully updated");
+      document.getElementById("my_modal_2").close();
       fetchData();
     } catch (error) {
-      alert(error);
+      showToast("Error", "Field", "Data field to update");
+      document.getElementById("my_modal_2").close();
     }
   };
 
@@ -103,32 +110,32 @@ const HakAksesPage = () => {
 
   return (
     <Layout>
-      <div className=" px-4 py-8 flex items-center justify-between gap-8 ">
+      <Toast ref={toast} />
+      <div
+        id="scrollableElement"
+        className=" px-4 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-8 "
+      >
         <div>
           <Typography variant="h5" color="blue-gray">
-            Data Hal Akses
+            Data Hak Akses
           </Typography>
           <Typography color="gray" className="mt-1 font-normal">
             See information about all members
           </Typography>
         </div>
-        <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
-          <Button variant="outlined" size="sm">
-            view all
-          </Button>
-
+        <div className="flex shrink-0  gap-2 ">
+          <div className="w-full md:w-72">
+            <Input
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              label="Search"
+              icon={<MagnifyingGlassIcon className="h-5 w-5" />}
+            />
+          </div>
           <DialogForm />
         </div>
-        <div className="w-full md:w-72">
-          <Input
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            label="Search"
-            icon={<MagnifyingGlassIcon className="h-5 w-5" />}
-          />
-        </div>
       </div>
-      <div className="h-[400px] top-0 overflow-y-auto">
+      <div id="scrollableElement" className="h-[400px] top-0">
         <div className="p-4 pb-16">
           <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">

@@ -18,7 +18,7 @@ const HasilSurveySBO = () => {
   ];
   return (
     <Layout>
-      <div className=" px-4 py-8 flex items-center justify-between gap-8 bg-[#E9781A]">
+      <div className=" px-4 py-8 flex flex-col justify-center md:flex-row md:items-center md:justify-between gap-8 bg-[#E9781A]">
         <div>
           <Typography variant="h5" color="white">
             Hasil Survey Budaya Organisasi
@@ -42,7 +42,7 @@ const HasilSurveySBO = () => {
           />
         </div>
       </div>
-      <div className="h-screen top-0 overflow-y-auto">
+      <div id="scrollableElement" className="">
         <HaslSuerveyForm dataTahun={year} dataTriwulan={quarter} />
       </div>
     </Layout>

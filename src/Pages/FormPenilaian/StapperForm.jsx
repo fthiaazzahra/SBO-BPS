@@ -51,7 +51,7 @@ export default function FormStapper() {
             />
           </div>
         </StepperPanel>
-        <StepperPanel header="Pliker">
+        <StepperPanel header="Priker">
           <FormPliker />
           <div className="flex pt-4 justify-start gap-4">
             <Button
@@ -67,7 +67,11 @@ export default function FormStapper() {
           </div>
         </StepperPanel>
         <StepperPanel header="LeadBO">
-          <div className={`${jabatan === "Kepala" ? "hidden" : "block"}`}>
+          <div
+            className={`${
+              localStorage.getItem("jabatan") === "Kepala" ? "hidden" : "block"
+            }`}
+          >
             <FormLeader />
           </div>
 

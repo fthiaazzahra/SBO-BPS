@@ -65,13 +65,6 @@ export function HaslSuerveyForm({ dataTahun, dataTriwulan }) {
     }
   };
 
-  const getItemProps = (page) => ({
-    onClick: () => setActive(page),
-    className: `h-8 w-8 flex items-center justify-center rounded-full ${
-      active === page ? "bg-blue-500 text-white" : "bg-gray-200"
-    }`,
-  });
-
   if (loading) {
     return (
       <div className="flex items-center justify-center mt-4">
@@ -81,7 +74,7 @@ export function HaslSuerveyForm({ dataTahun, dataTriwulan }) {
   }
 
   return (
-    <div className="p-4">
+    <div id="scrollableElement" className="p-4">
       <div className="w-full md:w-72 py-4">
         <Input
           label="Search"
@@ -90,7 +83,10 @@ export function HaslSuerveyForm({ dataTahun, dataTriwulan }) {
           onChange={(e) => setSearchTerm(e.target.value)} // Update kata kunci pencarian
         />
       </div>
-      <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+      <div
+        id="scrollableElement"
+        className="relative border shadow-md sm:rounded-lg"
+      >
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -121,7 +117,7 @@ export function HaslSuerveyForm({ dataTahun, dataTriwulan }) {
                   scope="row"
                   className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                 >
-                  {index + 1}
+                  {index + 1 + (active - 1) * perPage}
                 </th>
                 <th
                   scope="row"
@@ -136,25 +132,29 @@ export function HaslSuerveyForm({ dataTahun, dataTriwulan }) {
             ))}
           </tbody>
         </table>
-      </div>
-      <div className="flex items-center justify-center py-2">
-        <Button
-          className="flex gap-2"
-          variant="text"
-          onClick={prev}
-          disabled={active === 1}
-        >
-          <ArrowLeftIcon strokeWidth={2} className="h-4 w-4" /> Previous
-        </Button>
+        <div className="flex items-center justify-between py-4">
+          <Button
+            className="flex gap-2"
+            variant="text"
+            onClick={prev}
+            disabled={active === 1}
+          >
+            <ArrowLeftIcon strokeWidth={2} className="h-4 w-4" /> Previous
+          </Button>
 
-        <Button
-          className="flex gap-2"
-          variant="text"
-          onClick={next}
-          disabled={active === totalPages}
-        >
-          Next <ArrowRightIcon strokeWidth={2} className="h-4 w-4" />
-        </Button>
+          <span className="text-sm text-gray-700 dark:text-gray-300">
+            Page {active} of {totalPages}
+          </span>
+
+          <Button
+            className="flex gap-2"
+            variant="text"
+            onClick={next}
+            disabled={active === totalPages}
+          >
+            Next <ArrowRightIcon strokeWidth={2} className="h-4 w-4" />
+          </Button>
+        </div>
       </div>
     </div>
   );

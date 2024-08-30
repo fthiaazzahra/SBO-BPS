@@ -19,7 +19,7 @@ const HasilHitungPegawaiTeladan = () => {
   ];
   return (
     <Layout>
-      <div className=" px-4 py-8 flex items-center justify-between gap-8 bg-[#E9781A]">
+      <div className=" px-4 py-8 flex flex-col justify-center md:flex-row md:items-center md:justify-between gap-8 bg-[#E9781A]">
         <div>
           <Typography variant="h5" color="white">
             Hasil Survey Pegawai Teladan

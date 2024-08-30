@@ -3,7 +3,7 @@ import Navbar from "../../Components/Navbar/Index";
 
 // import ScatterChart from "./Chart/DiagramKartesius";
 import "animate.css";
-import DropTahun from "./DropdownTahun";
+
 // import Triwulan from "./DropdownTriwulan";
 import PegawaiTeladan from "./Pegawai-Teladan/Index";
 export default function HomePage() {
@@ -23,7 +23,7 @@ export default function HomePage() {
           {/* Overlay */}
           <div className="relative px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56 z-10 flex items-center justify-center  h-screen gap-4">
             <div className="">
-              <h1 className="mb-4 text-2xl md:text-3xl md:font-bold tracking-tight leading-none text-white animate__animated animate__fadeInDown">
+              <h1 className="mb-4 italic text-2xl md:text-3xl md:font-bold tracking-tight leading-none text-white animate__animated animate__fadeInDown">
                 Selamat Datang di Portal
               </h1>
               <div className="my-10">
@@ -45,13 +45,10 @@ export default function HomePage() {
           <div className="mx-auto w-full px-4 py-8 sm:px-6 sm:py-12 lg:px-16 lg:py-16">
             <div className="mx-auto max-w-lg text-center">
               <h4 className="uppercase text-xl font-bold sm:text-3xl">
-                Penilaian Budaya Organisasi
-                BPS Kabupaten Tasikmalaya
+                Penilaian Budaya Organisasi BPS Kabupaten Tasikmalaya
               </h4>
 
-              <p className="mt-4 text-white">
-                
-              </p>
+              <p className="mt-4 text-white"></p>
             </div>
 
             <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 px-4 md:px-10">
@@ -78,7 +75,6 @@ export default function HomePage() {
                 </svg>
 
                 <h2 className="mt-4 text-xl font-bold text-black">Indikator</h2>
-
               </a>
 
               <a
@@ -104,8 +100,6 @@ export default function HomePage() {
                 <h2 className="mt-4 text-xl font-bold text-black">
                   Gap Analiysis
                 </h2>
-
-                
               </a>
 
               <a
@@ -140,8 +134,6 @@ export default function HomePage() {
                 <h2 className="mt-4 text-xl font-bold text-black">
                   Diagram Indikator
                 </h2>
-
-               
               </a>
 
               <a
@@ -166,9 +158,9 @@ export default function HomePage() {
                   />
                 </svg>
 
-                <h2 className="mt-4 text-xl font-bold text-black">Importance and Performance Analysis </h2>
-
-               
+                <h2 className="mt-4 text-xl font-bold text-black">
+                  Importance and Performance Analysis{" "}
+                </h2>
               </a>
             </div>
           </div>
@@ -207,12 +199,7 @@ export default function HomePage() {
             <h1 className="text-3xl font-bold uppercase border-b-8 border-[#E9781A]">
               Pegawai Teladan
             </h1>
-            <div className="flex justify-center items-center mt-4 mb-4">
-              <div className="flex items-center">
-                <h1>Tahun : </h1>
-                <DropTahun />
-              </div>
-            </div>
+
             <PegawaiTeladan />
           </div>
         </div>

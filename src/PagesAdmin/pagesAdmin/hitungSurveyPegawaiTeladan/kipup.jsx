@@ -1,25 +1,46 @@
+/* eslint-disable no-unused-vars */
 import { Card, Input, Button, Typography } from "@material-tailwind/react";
 import axios from "axios";
 import { Dropdown } from "primereact/dropdown";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function KipUp() {
   const [kandidat, setkandidat] = useState("");
   const [quarter, setQuarter] = useState("");
   const [nama, setNamaKandidat] = useState("");
+  console.log(nama);
   const [nilai_kip_app, setNilai_kip_app] = useState(0);
   const [nilai_presensi, setNilai_presensi] = useState(0);
+  const [pegawai, setPegawai] = useState([]);
 
-  console.log(kandidat);
-  console.log(quarter);
-  console.log(nama);
+  let dataPegawai;
+  const namaPegawai = pegawai.map((kandidat) => kandidat.nama_kandidat);
 
-  const kandidats = ["Kandidat 1", "Kandidat 2", "Kandidat 3", "Kandidat 4"];
-  const namaKandidat = [
-    "Dudi Suryadi, S.E, M.P., M.Sc",
-    "Ika Nuryani, SST, M.Stat",
-    "Nani Hendrayani, S.IP",
-  ];
+  // console.log(nama_kandidat1);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        "https://aang.umkmpalangan.my.id/kandidat",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      setPegawai(response.data);
+    } catch (error) {
+      console.error(error);
+      // showToast("error", "Error", "Failed to fetch data");
+    }
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const kandidats = ["Kandidat 1", "Kandidat 2", "Kandidat 3"];
+  const namaKandidat = [""];
   const quarters = [
     { label: "Q1", value: 1 },
     { label: "Q2", value: 2 },
@@ -46,6 +67,7 @@ export function KipUp() {
         "https://aang.umkmpalangan.my.id/nilai_tambah_insert",
         {
           triwulan: quarter,
+          nama_kandidat: nama,
           nomor_kandidat: kandidat,
           nilai_kip_app: nilai_kip_app,
           nilai_presensi: nilai_presensi,
@@ -142,7 +164,7 @@ export function KipUp() {
               borderRadius: "6px",
             }}
             value={nama}
-            options={namaKandidat}
+            options={namaPegawai}
             onChange={(e) => setNamaKandidat(e.value)}
             placeholder="Select nama kandidat"
           />
@@ -178,7 +200,7 @@ export function KipUp() {
         <Button onClick={hitungNilaiTambah} className="mt-6" fullWidth>
           Hitung Nilai Tambah
         </Button>
-        <Button onClick={hitungResult} className="mt-6" fullWidth>
+        <Button onClick={hitungResult} className="mt-6 bg-green-500" fullWidth>
           Hitung Nilai Result
         </Button>
       </form>

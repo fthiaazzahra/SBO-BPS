@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
       <div className="flex flex-col h-screen overflow-hidden">
         <NavbarAdmin />
         <div className="flex">
-          <div className="hidden lg:block">
+          <div className="hidden lg:block ">
             <Sidebar />
           </div>
 

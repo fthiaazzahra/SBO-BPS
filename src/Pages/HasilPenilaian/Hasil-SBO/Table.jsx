@@ -2,6 +2,69 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+const Pliker = [
+  "Berorientasi pelayanan",
+
+  "Akuntabel",
+
+  "Kompeten",
+
+  "Harmonis",
+
+  "Loyal",
+
+  "Adaptif",
+
+  "Kolaboratif",
+];
+const LeadBO = [
+  "Pegawai menerima masukan secara rutin",
+  "Pimpinan memberikan contoh yang baik",
+  "Pimpinan memeberikan pujian",
+  "Pimpinan melakukan program coaching",
+  "Pimpinan bukan hanya bicara, tapi mengambil tindakan",
+  "Pimpinan menekankan pentingnya BerAKHLAK",
+  "Pimpinan melaksanakan perogram mentoring",
+  "Pimpinan mendorong untuk memberikan layanan terbaik",
+];
+const People = [
+  "Pegawai memenuhi kebutuhan masyarakat",
+  "Pegawai ramah, cekatan, solutif dan dapat diandalkan",
+  "Pegawai melakukan perbaikan tiada henti",
+  "Pegawai jujur, bertanggung jawab, cermat, disiplin dan berintegritas tinggi",
+  "Kekayaan dan barang milik negara digunakan secara bertanggungjawab, efektif, dan efisien",
+  "Pegawai tidak menyalahgunakan kewenangan jabatan",
+  "Pegaeai meningkatkan kompetensi diri",
+  "Pegawai membantu orang lain belajar",
+  "Pegawai melaksanakan tugas dengan kualitas terbaik",
+  "Pegawai menghargai setiap orang apapun latar belakangnya",
+  "Pegawai suka menolong orang lain",
+  "Pegawai membangun lingkungan yang kondusif",
+  "Pegawai memegang teguh ideologi pancasila UUD 1945",
+  "Pegawai menjaga nama baik ASN",
+  "Pegawai menjaga rahasia jabatan dan negara",
+  "pegawai cepat menyesuaikan diri",
+  "Pegawai terus berinovasi",
+  "Pegawai bertindak proaktif",
+  "Pegawai memberi kesempatan untuk berkontribusi",
+  "Pegawai terbaka dalam bekerjasama",
+  "Pegawai menggerakan pemanfaatan berbagai sumberdaya",
+];
+
+const System = [
+  "BPS Kab.Tasikmalaya memberkan sanksi untuk pegawai yang tidak berakhlak",
+  "BPS Kab. Tasikmalaya memiliki standar yang jelas",
+  "BPS Kab. Tasikmalaya memberikan penghargaan kepada pegawai",
+  "BPS Kab. Tasikmalaya telah memiliki media sosial",
+  "BPS Kab. Tasikmalaya memiliki sarana bagi pegawai",
+  "BPS Kab. Tasikmalaya memiliki sejumlah inisiatif atau program",
+  "BPS Kab. Tasikmalaya melaksanakan inisiatif atau program",
+  "Pegawai menjujukan kualitas pelayanan yang luar biasa",
+  "Terdapat jalur atau media komunikasi untuk mensosialisasikan BerAKHLAK",
+  "Perogram peningkatan BerAKHLAK dilakukan dengan mendengarkan saran atau masukan",
+  "Penghargaan yang berkaitan dengan nilai BerAKHLAK dilakukan secara adil dan transparan",
+];
+
 const Tables = ({ tahun, triwulan }) => {
   const [dataPliker, setDataPliker] = useState([]);
   const [dataLeadbo, setDataLeadbo] = useState([]);
@@ -142,7 +205,7 @@ const Tables = ({ tahun, triwulan }) => {
                         {index + 1}
                       </td>
                       <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        {item.indikator}
+                        {Pliker[index]}
                       </td>
                       <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                         {item.x}
@@ -234,7 +297,7 @@ const Tables = ({ tahun, triwulan }) => {
                         {index + 1}
                       </td>
                       <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        {item.indikator}
+                        {LeadBO[index]}
                       </td>
                       <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                         {item.x}
@@ -326,7 +389,7 @@ const Tables = ({ tahun, triwulan }) => {
                         {index + 1}
                       </td>
                       <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        {item.indikator}
+                        {People[index]}
                       </td>
                       <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                         {item.x}
@@ -417,7 +480,7 @@ const Tables = ({ tahun, triwulan }) => {
                         {index + 1}
                       </td>
                       <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                        {item.indikator}
+                        {System[index]}
                       </td>
                       <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                         {item.x}

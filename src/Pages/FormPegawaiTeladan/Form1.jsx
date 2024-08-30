@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import axios from "axios";
 import { RadioButton } from "primereact/radiobutton";
@@ -79,7 +80,8 @@ const categories = [
   { name: "4", key: "4" },
 ];
 
-const FormKandidat1 = () => {
+const FormKandidat1 = ({ nama, nomor }) => {
+  console.log(nama, nomor);
   const [desable, setDesable] = useState(false);
   const toastCenter = useRef(null);
   const [load, setLoad] = useState(false);
@@ -148,6 +150,7 @@ const FormKandidat1 = () => {
 
   // Mencetak selections ke konsol untuk debug
   console.log(selections);
+  console.log(localStorage.getItem("name"));
 
   // Fungsi untuk menangani submit form
   const handleSubmit = async (e) => {
@@ -168,15 +171,15 @@ const FormKandidat1 = () => {
       await axios.post(
         "https://aang.umkmpalangan.my.id/survey_karyawan_teladan",
         {
-          triwulan: "2",
-          nama_lengkap: localStorage.getItem("nama"),
+          triwulan: localStorage.getItem("triwulan"),
+          nama_lengkap: localStorage.getItem("name"),
           nip: localStorage.getItem("nip"),
-          jenis_kelamin: localStorage.getItem("jkl"),
-          pendidikan: localStorage.getItem("pendidikan"),
-          umur: localStorage.getItem("umur"),
-          masa_kerja: localStorage.getItem("masaKerja"),
-          nomor_kandidat: `kandidat 1`,
-          nama_kandidat: "Dudi Suryadi, S.E, M.P., M.Sc",
+          jenis_kelamin: "",
+          pendidikan: "",
+          umur: 0,
+          masa_kerja: "0",
+          nomor_kandidat: nomor,
+          nama_kandidat: nama,
           pertanyaan_1: pertanyaan_1,
           pertanyaan_2: pertanyaan_2,
           pertanyaan_3: pertanyaan_3,
@@ -230,21 +233,18 @@ const FormKandidat1 = () => {
   return (
     <div className="flex flex-col h-12rem gap-7 items-center ">
       <div className="form-group w-full lg:w-1/2">
-        <div className="flex items-stretch gap-4">
+        <div className="flex items-center gap-4">
           <img
-            src={"/img/man_5-1024.webp"}
+            src={"/img/profile.jpg"}
             alt=""
             className="aspect-square w-20 rounded-lg object-cover"
           />
 
           <div>
-            <h3 className="text-lg/tight font-medium text-gray-900">
-              Dudi Suryadi, S.E, M.P., M.Sc
-            </h3>
+            <h3 className="text-lg/tight font-medium text-gray-900">{nama}</h3>
 
             <p className="mt-0.5 text-gray-700">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Voluptates voluptas distinctio nesciunt quas non animi.
+              Kandidat pegawai teladan nomor urut 1
             </p>
           </div>
         </div>

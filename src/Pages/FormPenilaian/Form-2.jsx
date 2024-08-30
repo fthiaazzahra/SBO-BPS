@@ -13,6 +13,7 @@ const categories = [
 const FormPriker = () => {
   const [desable, setDesable] = useState(false);
   const [pertanyaan, setPertanyaan] = useState([]);
+  console.log(pertanyaan);
   const toastCenter = useRef(null);
   const [loader, setLoader] = useState(false);
   const [harapanSelections, setHarapanSelections] = useState([]);
@@ -70,10 +71,6 @@ const FormPriker = () => {
           triwulan: localStorage.getItem("triwulan"),
           label: "PriKer",
           nama: localStorage.getItem("name"),
-          jenis_kelamin: localStorage.getItem("gender"),
-          umur: localStorage.getItem("umur"),
-          pendidikan: localStorage.getItem("Pendidikan"),
-          masa_kerja: localStorage.getItem("timeKerja"),
           score_harapan: harapanSelections,
           score_kinerja: kinerjaSelections,
         }

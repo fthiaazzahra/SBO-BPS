@@ -29,6 +29,8 @@ import HitungNilaiPegawaiTeladan from "./PagesAdmin/pagesAdmin/hitungSurveyPegaw
 import HasilHitungPegawaiTeladan from "./PagesAdmin/pagesAdmin/hasilSurvey/pegawaiTeladan";
 import HasilSurveySBO from "./PagesAdmin/pagesAdmin/hasilSurvey/SBO";
 import HitungNilaiSBO from "./PagesAdmin/pagesAdmin/hitungSurveySBO";
+import PegawaiTeladanCMS from "./PagesAdmin/pagesAdmin/pegawaiTeladan";
+import PemenangCMS from "./PagesAdmin/pagesAdmin/hasilCMS";
 
 function App() {
   return (
@@ -38,6 +40,8 @@ function App() {
         <Route path="/admin/home" element={<HomeAdmin />} />
         <Route path="/admin/pegawai" element={<PegawaiPage />} />
         <Route path="/admin/hak-akses" element={<HakAksesPage />} />
+        <Route path="/admin/pegawai-teladan" element={<PegawaiTeladanCMS />} />
+        <Route path="/admin/pemenang-cms" element={<PemenangCMS />} />
         <Route
           path="/admin/hitung-nilai-pegawai-teladan"
           element={<HitungNilaiPegawaiTeladan />}
